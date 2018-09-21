@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WEINTEK_Macro_Generator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WEINTEK_Macro_Generator_jar</output-path>
+    <root id="archive" name="WEINTEK_Macro_Generator.jar">
+      <element id="module-output" name="WEINTEK_Macro_Generator" />
+    </root>
+  </artifact>
+</component>
