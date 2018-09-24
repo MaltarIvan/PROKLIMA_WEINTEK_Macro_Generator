@@ -8,38 +8,38 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ConfigMain {
-    static private int dispStrIdStart;
-    static private int maxDataPerScreen;
-    static private int stringIdStart;
-    static private int regStart;
-    static private int addrStart;
-    static private int stateIndexStart;
-    static private int stateCountStart;
-    static private int disabledStart;
-    static private int inputDisabledStart;
-    static private int stateMonitorStart;
-    static private int stateUpdateStart;
-    static private int stateStringStart;
-    static private int digitalStateSringStart;
-    static private int TPConfigDW0Reg;
-    static private int TPConfigDW0Addr;
-    static private int TPConfigDW1Reg;
-    static private int TPConfigDW1Addr;
-    static private int TPConfigDW2Reg;
-    static private int TPConfigDW2Addr;
-    static private int TPConfigDW3Reg;
-    static private int TPConfigDW3Addr;
-    static private int TPConfigDW4Reg;
-    static private int TPConfigDW4Addr;
-    static private int StptDigitalReadMacroId;
-    static private int languageCount;
-    static private String mainConfigPath;
+    private int dispStrIdStart;
+    private int maxDataPerScreen;
+    private int stringIdStart;
+    private int regStart;
+    private int addrStart;
+    private int stateIndexStart;
+    private int stateCountStart;
+    private int disabledStart;
+    private int inputDisabledStart;
+    private int stateMonitorStart;
+    private int stateUpdateStart;
+    private int stateStringStart;
+    private int digitalStateSringStart;
+    private int TPConfigDW0Reg;
+    private int TPConfigDW0Addr;
+    private int TPConfigDW1Reg;
+    private int TPConfigDW1Addr;
+    private int TPConfigDW2Reg;
+    private int TPConfigDW2Addr;
+    private int TPConfigDW3Reg;
+    private int TPConfigDW3Addr;
+    private int TPConfigDW4Reg;
+    private int TPConfigDW4Addr;
+    private int StptDigitalReadMacroId;
+    private int languageCount;
+    private String mainConfigPath;
 
     public ConfigMain(String mainConfigPath) {
         this.mainConfigPath = mainConfigPath;
     }
 
-    static public void getConfiguration() throws FileNotFoundException, IOException, WrongFormatException {
+    public void getConfiguration() throws IOException, WrongFormatException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(mainConfigPath));
         String line = bufferedReader.readLine();
 
@@ -137,7 +137,7 @@ public class ConfigMain {
         bufferedReader.close();
     }
 
-    public static void print() {
+    public void print() {
         System.out.println(dispStrIdStart);
         System.out.println(maxDataPerScreen);
         System.out.println(stringIdStart);
@@ -170,7 +170,7 @@ public class ConfigMain {
     }
 
     public void setStringIdStart(int stringIdStart) {
-        ConfigMain.stringIdStart = stringIdStart;
+        this.stringIdStart = stringIdStart;
     }
 
     public int getDispStrIdStart() {

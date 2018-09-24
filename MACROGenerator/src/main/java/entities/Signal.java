@@ -1,15 +1,12 @@
 package entities;
 
-import java.util.ArrayList;
-
 public class Signal {
     private String signalName;
-    private ArrayList<States> states;
-    public int stateStringIndex;
-    private String stringId;
+    private States states;
+    private int stringId;
     private int enabledReg;
     private int enabledAddr;
-    private String enabledCondition;
+    private int enabledCondition;
     private int enabledTPConfigDW;
     private int bitPosition;
     private int signalReg;
@@ -27,27 +24,19 @@ public class Signal {
         this.signalName = signalName;
     }
 
-    public ArrayList<States> getStates() {
+    public States getStates() {
         return states;
     }
 
-    public void setStates(ArrayList<States> states) {
+    public void setStates(States states) {
         this.states = states;
     }
 
-    public String getStringId() {
+    public int getStringId() {
         return stringId;
     }
 
-    public int getStateStringIndex() {
-        return stateStringIndex;
-    }
-
-    public void setStateStringIndex(int stateStringIndex) {
-        this.stateStringIndex = stateStringIndex;
-    }
-
-    public void setStringId(String stringId) {
+    public void setStringId(int stringId) {
         this.stringId = stringId;
     }
 
@@ -67,11 +56,11 @@ public class Signal {
         this.enabledAddr = enabledAddr;
     }
 
-    public String getEnabledCondition() {
+    public int getEnabledCondition() {
         return enabledCondition;
     }
 
-    public void setEnabledCondition(String enabledCondition) {
+    public void setEnabledCondition(int enabledCondition) {
         this.enabledCondition = enabledCondition;
     }
 
@@ -113,5 +102,22 @@ public class Signal {
 
     public void setTPConfigDW(boolean TPConfigDW) {
         this.TPConfigDW = TPConfigDW;
+    }
+
+    @Override
+    public String toString() {
+        return "Signal{" +
+                "signalName='" + signalName + '\'' +
+                ", states=" + states +
+                ", stringId=" + stringId +
+                ", enabledReg=" + enabledReg +
+                ", enabledAddr=" + enabledAddr +
+                ", enabledCondition=" + enabledCondition +
+                ", enabledTPConfigDW=" + enabledTPConfigDW +
+                ", bitPosition=" + bitPosition +
+                ", signalReg=" + signalReg +
+                ", signalAddr=" + signalAddr +
+                ", TPConfigDW=" + TPConfigDW +
+                '}';
     }
 }

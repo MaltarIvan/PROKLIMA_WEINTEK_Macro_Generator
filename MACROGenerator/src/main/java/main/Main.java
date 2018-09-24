@@ -1,5 +1,6 @@
 package main;
 
+import entities.States;
 import exceptions.WrongFormatException;
 import utilities.ConfigMain;
 import utilities.ConfigSignals;
@@ -7,6 +8,7 @@ import utilities.ConfigSignals;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     private static final String WINDOW_TITLE =  "Macro_Generator";
@@ -30,10 +32,15 @@ public class Main {
         } catch (WrongFormatException e) {
             e.printStackTrace();
         }
+
+        ConfigSignals configSignals = new ConfigSignals("config\\Signals.xlsx");
         try {
-            ConfigSignals configSignals = new ConfigSignals("config\\Signals.xlsx");
+            configSignals.getConfiguration();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (WrongFormatException e) {
+            e.printStackTrace();
         }
+        System.out.println("Config done!");
     }
 }
