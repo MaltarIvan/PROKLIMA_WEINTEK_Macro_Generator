@@ -6,7 +6,7 @@ public class Signal {
     private int stringId;
     private int enabledReg;
     private int enabledAddr;
-    private int enabledCondition;
+    private String enabledCondition;
     private int enabledTPConfigDW;
     private int bitPosition;
     private int signalReg;
@@ -56,11 +56,11 @@ public class Signal {
         this.enabledAddr = enabledAddr;
     }
 
-    public int getEnabledCondition() {
+    public String getEnabledCondition() {
         return enabledCondition;
     }
 
-    public void setEnabledCondition(int enabledCondition) {
+    public void setEnabledCondition(String enabledCondition) {
         this.enabledCondition = enabledCondition;
     }
 

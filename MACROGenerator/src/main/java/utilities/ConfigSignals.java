@@ -126,28 +126,49 @@ public class ConfigSignals {
                         }
                     } else {
                         cell = row.getCell(3);
-                        switch (cell.getCellType()) {
-                            case STRING:
-                                signal.setEnabledReg(Integer.parseInt(cell.getStringCellValue()));
-                                break;
-                            case NUMERIC:
-                                signal.setEnabledReg((int) cell.getNumericCellValue());
-                                break;
-                            default:
-                                throw new WrongFormatException();
+                        if (cell == null) {
+                            signal.setEnabledCondition("x");
+                        } else {
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    signal.setEnabledReg(Integer.parseInt(cell.getStringCellValue()));
+                                    break;
+                                case NUMERIC:
+                                    signal.setEnabledReg((int) cell.getNumericCellValue());
+                                    break;
+                                default:
+                                    throw new WrongFormatException();
+                            }
                         }
+
                         cell = row.getCell(4);
-                        switch (cell.getCellType()) {
-                            case STRING:
-                                signal.setEnabledAddr(Integer.parseInt(cell.getStringCellValue()));
-                                break;
-                            case NUMERIC:
-                                signal.setEnabledAddr((int) cell.getNumericCellValue());
-                                break;
-                            default:
-                                throw new WrongFormatException();
+                        if (cell == null) {
+                            signal.setEnabledCondition("x");
+                        } else {
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    signal.setEnabledAddr(Integer.parseInt(cell.getStringCellValue()));
+                                    break;
+                                case NUMERIC:
+                                    signal.setEnabledAddr((int) cell.getNumericCellValue());
+                                    break;
+                                default:
+                                    throw new WrongFormatException();
+                            }
+                        }
+
+                        cell = row.getCell(6);
+                        if (cell != null) {
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    signal.setEnabledCondition(cell.getStringCellValue());
+                                    break;
+                                default:
+                                    throw new WrongFormatException();
+                            }
                         }
                     }
+
                     cell = row.getCell(8);
                     switch (cell.getCellType()) {
                         case STRING:
