@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jxls-jexcel-1.0.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../jxls-jexcel-1.0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
