@@ -12,6 +12,7 @@ public class Signal {
     private int signalReg;
     private int signalAddr;
     private boolean TPConfigDW;
+    private boolean disabled;
 
     public Signal() {
     }
@@ -104,6 +105,14 @@ public class Signal {
         this.TPConfigDW = TPConfigDW;
     }
 
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
     @Override
     public String toString() {
         return "Signal{" +
@@ -112,12 +121,13 @@ public class Signal {
                 ", stringId=" + stringId +
                 ", enabledReg=" + enabledReg +
                 ", enabledAddr=" + enabledAddr +
-                ", enabledCondition=" + enabledCondition +
+                ", enabledCondition='" + enabledCondition + '\'' +
                 ", enabledTPConfigDW=" + enabledTPConfigDW +
                 ", bitPosition=" + bitPosition +
                 ", signalReg=" + signalReg +
                 ", signalAddr=" + signalAddr +
                 ", TPConfigDW=" + TPConfigDW +
+                ", disabled=" + disabled +
                 '}';
     }
 }

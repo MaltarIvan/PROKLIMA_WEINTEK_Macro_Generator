@@ -5,11 +5,13 @@ import java.util.Objects;
 
 public class States {
     private ArrayList<String[]> statesStr;
+    private ArrayList<Signal> signals;
     private int stateStringIndex;
 
     public States(ArrayList<String[]> statesStr, int stateStringIndex) {
         this.statesStr = statesStr;
         this.stateStringIndex = stateStringIndex;
+        signals = new ArrayList<>();
     }
 
     public ArrayList<String[]> getStatesStr() {
@@ -26,6 +28,14 @@ public class States {
 
     public void setStateStringIndex(int stateStringIndex) {
         this.stateStringIndex = stateStringIndex;
+    }
+
+    public ArrayList<Signal> getSignals() {
+        return signals;
+    }
+
+    public void setSignals(ArrayList<Signal> signals) {
+        this.signals = signals;
     }
 
     @Override

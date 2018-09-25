@@ -35,6 +35,8 @@ public class ConfigSignals {
     private ArrayList<Signal> advancedFan;
     private ArrayList<Signal> advancedTemp;
 
+    private boolean configurated;
+
     public ConfigSignals(String path) {
         this.path = path;
     }
@@ -56,31 +58,42 @@ public class ConfigSignals {
         int currentSignalGroup = -1;
 
         for (Row row : sheet) {
+            Cell cell;
             if (row.getRowNum() > 0) {
-                if (row.getLastCellNum() == 1) {
-                    switch (row.getCell(0).getStringCellValue()) {
-                        case MAIN_DIGITAL_KEY:
-                            currentSignalGroup = MAIN_DIGITAL_VALUE;
-                            break;
-                        case ADVANCED_DIGITAL_KEY:
-                            currentSignalGroup = ADVANCED_DIGITAL_VALUE;
-                            break;
-                        case ADVANCED_INPUTS_KEY:
-                            currentSignalGroup = ADVANCED_INPUTS_VALUE;
-                            break;
-                        case ADVANCED_FAN_KEY:
-                            currentSignalGroup = ADVANCED_FAN_VALUE;
-                            break;
-                        case ADVANCED_TEMP_KEY:
-                            currentSignalGroup = ADVANCED_TEMP_VALUE;
-                            break;
-                        default:
-                            throw new WrongFormatException();
+                if (row.getCell(0) != null) {
+                    if (row.getCell(0).getCellType() == CellType.STRING) {
+                        String content = row.getCell(0).getStringCellValue();
+                        String[] strs = content.split("#");
+                        if (strs.length > 1) {
+                            content = strs[1];
+                            if (content.equals("GROUP")) {
+                                switch (row.getCell(0).getStringCellValue()) {
+                                    case MAIN_DIGITAL_KEY:
+                                        currentSignalGroup = MAIN_DIGITAL_VALUE;
+                                        break;
+                                    case ADVANCED_DIGITAL_KEY:
+                                        currentSignalGroup = ADVANCED_DIGITAL_VALUE;
+                                        break;
+                                    case ADVANCED_INPUTS_KEY:
+                                        currentSignalGroup = ADVANCED_INPUTS_VALUE;
+                                        break;
+                                    case ADVANCED_FAN_KEY:
+                                        currentSignalGroup = ADVANCED_FAN_VALUE;
+                                        break;
+                                    case ADVANCED_TEMP_KEY:
+                                        currentSignalGroup = ADVANCED_TEMP_VALUE;
+                                        break;
+                                    default:
+                                        throw new WrongFormatException();
+                                }
+                            }
+                        }
+                    } else {
+                        throw new WrongFormatException();
                     }
                 }
-                if (row.getLastCellNum() == 19) {
+                if (row.getLastCellNum() == 20) {
                     Signal signal = new Signal();
-                    Cell cell;
                     cell = row.getCell(1);
                     if (cell.getCellType() == CellType.STRING) {
                         signal.setSignalName(cell.getStringCellValue());
@@ -100,9 +113,19 @@ public class ConfigSignals {
                     }
 
                     cell = row.getCell(5);
-                    boolean TPConfigDW = cell != null;
+                    boolean TPConfigDW = true;
+                    if (cell == null) {
+                        TPConfigDW = false;
+                    } else {
+                        if (cell.getCellType() == CellType.STRING) {
+                            if (cell.getStringCellValue().equals("x")) {
+                                TPConfigDW = false;
+                            }
+                        }
+                    }
                     signal.setTPConfigDW(TPConfigDW);
                     if (TPConfigDW) {
+                        signal.setEnabledCondition("x");
                         switch (cell.getCellType()) {
                             case STRING:
                                 signal.setEnabledTPConfigDW(Integer.parseInt(cell.getStringCellValue()));
@@ -126,35 +149,31 @@ public class ConfigSignals {
                         }
                     } else {
                         cell = row.getCell(3);
-                        if (cell == null) {
-                            signal.setEnabledCondition("x");
-                        } else {
-                            switch (cell.getCellType()) {
-                                case STRING:
+                        switch (cell.getCellType()) {
+                            case STRING:
+                                if (!cell.getStringCellValue().equals("x")) {
                                     signal.setEnabledReg(Integer.parseInt(cell.getStringCellValue()));
-                                    break;
-                                case NUMERIC:
-                                    signal.setEnabledReg((int) cell.getNumericCellValue());
-                                    break;
-                                default:
-                                    throw new WrongFormatException();
-                            }
+                                }
+                                break;
+                            case NUMERIC:
+                                signal.setEnabledReg((int) cell.getNumericCellValue());
+                                break;
+                            default:
+                                throw new WrongFormatException();
                         }
 
                         cell = row.getCell(4);
-                        if (cell == null) {
-                            signal.setEnabledCondition("x");
-                        } else {
-                            switch (cell.getCellType()) {
-                                case STRING:
+                        switch (cell.getCellType()) {
+                            case STRING:
+                                if (!cell.getStringCellValue().equals("x")) {
                                     signal.setEnabledAddr(Integer.parseInt(cell.getStringCellValue()));
-                                    break;
-                                case NUMERIC:
-                                    signal.setEnabledAddr((int) cell.getNumericCellValue());
-                                    break;
-                                default:
-                                    throw new WrongFormatException();
-                            }
+                                }
+                                break;
+                            case NUMERIC:
+                                signal.setEnabledAddr((int) cell.getNumericCellValue());
+                                break;
+                            default:
+                                throw new WrongFormatException();
                         }
 
                         cell = row.getCell(6);
@@ -192,8 +211,19 @@ public class ConfigSignals {
                             throw new WrongFormatException();
                     }
 
+                    cell = row.getCell(10);
+                    if (cell.getCellType() == CellType.BOOLEAN) {
+                        if (cell.getBooleanCellValue()) {
+                            signal.setDisabled(true);
+                        } else {
+                            signal.setDisabled(false);
+                        }
+                    } else {
+                        throw new WrongFormatException();
+                    }
+
                     ArrayList<String[]> statesStr = new ArrayList<>();
-                    for (int i = 10; i <= 18; i++) {
+                    for (int i = 11; i <= 19; i++) {
                         cell = row.getCell(i);
                         if (cell.getCellType() == CellType.STRING) {
                             statesStr.add(cell.getStringCellValue().split("\\*"));
@@ -204,10 +234,12 @@ public class ConfigSignals {
 
                     States states = new States(statesStr, nextStatesStringIndex);
                     if (pastStates.contains(states)) {
-                        int ind = pastStates.indexOf(states);
-                        signal.setStates(pastStates.get(ind));
+                        States currentStates = pastStates.get(pastStates.indexOf(states));
+                        signal.setStates(currentStates);
+                        currentStates.getSignals().add(signal);
                     } else {
                         signal.setStates(states);
+                        states.getSignals().add(signal);
                         nextStatesStringIndex += statesStr.get(0).length;
                         pastStates.add(states);
                     }
@@ -234,6 +266,7 @@ public class ConfigSignals {
                 }
             }
         }
+        configurated = true;
     }
 
     public String getPath() {
@@ -282,5 +315,13 @@ public class ConfigSignals {
 
     public void setAdvancedTemp(ArrayList<Signal> advancedTemp) {
         this.advancedTemp = advancedTemp;
+    }
+
+    public boolean isConfigurated() {
+        return configurated;
+    }
+
+    public void setConfigurated(boolean configurated) {
+        this.configurated = configurated;
     }
 }

@@ -3,7 +3,6 @@ package utilities;
 import exceptions.WrongFormatException;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -20,7 +19,7 @@ public class ConfigMain {
     private int stateMonitorStart;
     private int stateUpdateStart;
     private int stateStringStart;
-    private int digitalStateSringStart;
+    private int digitalStateStringStart;
     private int TPConfigDW0Reg;
     private int TPConfigDW0Addr;
     private int TPConfigDW1Reg;
@@ -34,6 +33,7 @@ public class ConfigMain {
     private int StptDigitalReadMacroId;
     private int languageCount;
     private String mainConfigPath;
+    private boolean configurated;
 
     public ConfigMain(String mainConfigPath) {
         this.mainConfigPath = mainConfigPath;
@@ -90,7 +90,7 @@ public class ConfigMain {
                     stateStringStart = Integer.parseInt(value);
                     break;
                 case "DIGITAL_STATES_STRING_START":
-                    digitalStateSringStart = Integer.parseInt(value);
+                    digitalStateStringStart = Integer.parseInt(value);
                     break;
                 case "TPConfigDW0_REG":
                     TPConfigDW0Reg = Integer.parseInt(value);
@@ -135,6 +135,8 @@ public class ConfigMain {
             line = bufferedReader.readLine();
         }
         bufferedReader.close();
+
+        configurated = true;
     }
 
     public void print() {
@@ -150,7 +152,7 @@ public class ConfigMain {
         System.out.println(stateMonitorStart);
         System.out.println(stateUpdateStart);
         System.out.println(stateStringStart);
-        System.out.println(digitalStateSringStart);
+        System.out.println(digitalStateStringStart);
         System.out.println(TPConfigDW0Reg);
         System.out.println(TPConfigDW0Addr);
         System.out.println(TPConfigDW1Reg);
@@ -261,12 +263,12 @@ public class ConfigMain {
         this.stateStringStart = stateStringStart;
     }
 
-    public int getDigitalStateSringStart() {
-        return digitalStateSringStart;
+    public int getDigitalStateStringStart() {
+        return digitalStateStringStart;
     }
 
-    public void setDigitalStateSringStart(int digitalStateSringStart) {
-        this.digitalStateSringStart = digitalStateSringStart;
+    public void setDigitalStateStringStart(int digitalStateStringStart) {
+        this.digitalStateStringStart = digitalStateStringStart;
     }
 
     public int getTPConfigDW0Reg() {
@@ -371,5 +373,13 @@ public class ConfigMain {
 
     public void setMainConfigPath(String mainConfigPath) {
         this.mainConfigPath = mainConfigPath;
+    }
+
+    public boolean isConfigurated() {
+        return configurated;
+    }
+
+    public void setConfigurated(boolean configurated) {
+        this.configurated = configurated;
     }
 }
