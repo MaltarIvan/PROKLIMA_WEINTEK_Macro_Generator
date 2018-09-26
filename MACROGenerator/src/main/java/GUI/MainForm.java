@@ -121,23 +121,46 @@ public class MainForm {
             logArea.append("Config done!" + newLine);
 
             try {
-                File HMIInitMacro = HMIInit.generateMacro(configMain, configSignals);
-                // saveFile(HMIInitMacro);
+                fileChooser.setCurrentDirectory(new File("."));
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                String path;
 
-                File mainDigitalMacro = StptDigitalInit.generateStptMainDigitalMacro(configMain, configSignals, mainForm);
-                // saveFile(mainDigitalMacro);
+                fileChooser.setDialogTitle("Choose HMI_init location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    HMIInit.generateMacro(configMain, configSignals, path);
+                }
 
-                File advancedDigitalMacro = StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configSignals, mainForm);
-                // saveFile(advancedDigitalMacro);
+                fileChooser.setDialogTitle("Choose StptMainDigital_init location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    StptDigitalInit.generateStptMainDigitalMacro(configMain, configSignals, path, mainForm);
+                }
 
-                File advancedInputsMacro = StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configSignals, mainForm);
-                // saveFile(advancedInputsMacro);
+                fileChooser.setDialogTitle("Choose StptAdvancedDigital_init location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configSignals, path, mainForm);
+                }
 
-                File advancedFanMacro = StptDigitalInit.generateStptAdvancedFanMacro(configMain, configSignals, mainForm);
-                // saveFile(advancedFanMacro);
+                fileChooser.setDialogTitle("Choose StptAdvancedInputs_init location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configSignals, path, mainForm);
+                }
 
-                File advancedTempMacro = StptDigitalInit.generateStptAdvancedTempMacro(configMain, configSignals, mainForm);
-                // saveFile(advancedTempMacro);
+                fileChooser.setDialogTitle("Choose StptAdvancedFan_init location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    StptDigitalInit.generateStptAdvancedFanMacro(configMain, configSignals, path, mainForm);
+                }
+
+                fileChooser.setDialogTitle("Choose StptAdvancedTemp_init location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    StptDigitalInit.generateStptAdvancedTempMacro(configMain, configSignals, path, mainForm);
+                }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
             } catch (IOException e) {

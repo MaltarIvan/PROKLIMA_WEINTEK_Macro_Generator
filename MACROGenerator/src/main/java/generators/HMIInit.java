@@ -23,9 +23,10 @@ public final class HMIInit {
 
     private HMIInit() {}
 
-    public static File generateMacro(ConfigMain configMain, ConfigSignals configSignals) throws ConfigurationNotDoneException, IOException {
+    public static File generateMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws ConfigurationNotDoneException, IOException {
+        path += "\\" + MACRO_NAME;
         ArrayList<Signal> signals = new ArrayList<>();
-        File file = new File(MACRO_NAME);
+        File file = new File(path);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
 

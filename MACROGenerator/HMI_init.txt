@@ -1,0 +1,1028 @@
+
+macro_command main()
+
+short DIGITAL_STATES_STRINGS_START = 275
+
+// Language: 0
+char string1[4] = "Auto"// Operating mode, Act Operating mode : index = 0, count = 6
+char string2[3] = "Off"
+char string3[9] = "BuildProt"
+char string4[7] = "Economy"
+char string5[7] = "Comfort"
+char string6[11] = "FreeCooling"
+char string7[5] = "SplyT"// Tmp control mode : index = 6, count = 3
+char string8[4] = "ExtT"
+char string9[5] = "RoomT"
+char string10[5] = "SplyH"// Hum control mode : index = 9, count = 3
+char string11[4] = "ExtH"
+char string12[3] = "RmH"
+char string13[9] = "Hum/Dehum"// Hum stpt selection : index = 12, count = 4
+char string14[9] = "+/- 1/2Dz"
+char string15[6] = "Hum+Dz"
+char string16[8] = "Dehum-Dz"
+char string17[4] = "Auto"// 2 Extract fan mode, 3 Extract fan mode, 4 Extract fan mode, 5 Extract fan mode, 6 Extract fan mode, 7 Extract fan mode, 8 Extract fan mode, 9 Extract fan mode : index = 16, count = 3
+char string18[3] = "Off"
+char string19[2] = "On"
+char string20[2] = "NO"// Damper dly off - fire, Dehum tmp min stpt, Enable all obj., Room unit, Humidity, Dehumidification, Common alarm, Outs air dampr fdbk, Exh air dampr fdbk, Extract air pressure, Supply air pressure, Supply air pressure switch, Air flow switch, Filter alarm, Fresh air filter, Supply filter, Extract filter, Exhaust filter, 2 Aux supply filter, 3 Aux supply filter, 2 Aux extract filter, 3 Aux extract filter, Remote start, Outdoor temperature, Supply air temp, Extract air temp, Room tmp sensor, Tmp before cooler, Tmp after cooler, B11-Temperature, B12-Temperature, Humidifier, Outs air hum rel, Extract air hum rel, Room humidity rel, Cooling pump, Compressor, Fire damper closed, External setpoint, Room unit, Duct pres stpt by rm unit, Following system, Fan state, Supply fan, Supply VAVs , Fire damper closed, Hrec frost protect, Pre heating, Free cooling, Mixing damper, Heating, Cooling, El heating, El heater on ext, 2 El heating, 3 El heating, VRF in sequence, VRF reg by dT, VRF vent mode, VRF auto mode, VRF 2, Siphon heater, Piping heater : index = 19, count = 2
+char string21[3] = "YES"
+char string22[4] = "Null"// Fire mode : index = 21, count = 5
+char string23[7] = "SFEFOff"
+char string24[5] = "EFOff"
+char string25[5] = "SFOff"
+char string26[6] = "SFEFOn"
+char string27[5] = "Other"// Scale pressure supply fan, Scale pressure extract fan : index = 26, count = 5
+char string28[6] = "1000Pa"
+char string29[6] = "2000Pa"
+char string30[6] = "3000Pa"
+char string31[6] = "5000Pa"
+char string32[3] = "Off"// Modbus fan error, Cascade controller, Disable by outs tmp, Auto configuration IOs : index = 31, count = 2
+char string33[2] = "On"
+char string34[7] = "Disable"// El heating : index = 33, count = 8
+char string35[3] = "Reg"
+char string36[7] = "Reg+St1"
+char string37[7] = "Reg+St2"
+char string38[7] = "Reg+St3"
+char string39[3] = "St1"
+char string40[3] = "St2"
+char string41[3] = "St3"
+char string42[3] = "Fan"// Air quality control : index = 41, count = 3
+char string43[6] = "MixDmp"
+char string44[10] = "Fan+MixDmp"
+char string45[3] = "Avg"// Air quality mix : index = 44, count = 3
+char string46[3] = "Min"
+char string47[3] = "Max"
+char string48[4] = "Norm"// Common alarm polarity : index = 47, count = 2
+char string49[3] = "Rev"
+char string50[6] = "Htg+Dz"// Tmp stpt selection, Tmp stpt selection : index = 49, count = 3
+char string51[7] = "Htg/Clg"
+char string52[8] = "HtgCurve"
+char string53[1] = "0"// Extract air pressure switch, Air quality, Aux tmp sensor, Fans nr : index = 52, count = 10
+char string54[1] = "1"
+char string55[1] = "2"
+char string56[1] = "3"
+char string57[1] = "4"
+char string58[1] = "5"
+char string59[1] = "6"
+char string60[1] = "7"
+char string61[1] = "8"
+char string62[1] = "9"
+char string63[4] = "None"// Outside air temp : index = 62, count = 2
+char string64[3] = "Yes"
+char string65[6] = "ppmVol"// Fan control mode : index = 64, count = 6
+char string66[8] = "ppmPress"
+char string67[6] = "Volume"
+char string68[8] = "Pressure"
+char string69[10] = "FixedSpeed"
+char string70[6] = "Direct"
+char string71[2] = "No"// Outputs fans : index = 70, count = 4
+char string72[5] = "SFStt"
+char string73[5] = "EFStt"
+char string74[11] = "SFStt+EFStt"
+char string75[2] = "No"// Dampers : index = 74, count = 4
+char string76[3] = "Out"
+char string77[3] = "Exh"
+char string78[7] = "Out+Exh"
+char string79[7] = "Disable"// Extract fan : index = 78, count = 4
+char string80[7] = "Default"
+char string81[9] = "Fix Speed"
+char string82[6] = "Direct"
+char string83[7] = "Disable"// 2 Extract fan, 3 Extract fan, 4 Extract fan, 5 Extract fan, 6 Extract fan, 7 Extract fan, 8 Extract fan, 9 Extract fan : index = 82, count = 3
+char string84[9] = "Fix Speed"
+char string85[6] = "Direct"
+char string86[2] = "NO"// Chovr type select : index = 85, count = 4
+char string87[10] = "ChovrTstat"
+char string88[9] = "ChovrSens"
+char string89[8] = "CoilSens"
+char string90[6] = "NoHREC"// Heat recovery : index = 89, count = 5
+char string91[9] = "PlateHREC"
+char string92[9] = "Rothoterm"
+char string93[9] = "Polyblock"
+char string94[10] = "GlycolHREC"
+char string95[5] = "NoVRF"// VRF type sel : index = 94, count = 7
+char string96[11] = "Mitsubishi1"
+char string97[11] = "Mitsubishi2"
+char string98[11] = "Mitsubishi3"
+char string99[6] = "Daikin"
+char string100[11] = "SamsungAlfa"
+char string101[10] = "RTD10_FDP3"
+
+// Language: 1
+char string102[4] = "Auto"// Operating mode, Act Operating mode : index = 0, count = 6
+char string103[3] = "Off"
+char string104[9] = "BuildProt"
+char string105[7] = "Economy"
+char string106[7] = "Comfort"
+char string107[11] = "FreeCooling"
+char string108[5] = "SplyT"// Tmp control mode : index = 6, count = 3
+char string109[4] = "ExtT"
+char string110[5] = "RoomT"
+char string111[5] = "SplyH"// Hum control mode : index = 9, count = 3
+char string112[4] = "ExtH"
+char string113[3] = "RmH"
+char string114[9] = "Hum/Dehum"// Hum stpt selection : index = 12, count = 4
+char string115[9] = "+/- 1/2Dz"
+char string116[6] = "Hum+Dz"
+char string117[8] = "Dehum-Dz"
+char string118[4] = "Auto"// 2 Extract fan mode, 3 Extract fan mode, 4 Extract fan mode, 5 Extract fan mode, 6 Extract fan mode, 7 Extract fan mode, 8 Extract fan mode, 9 Extract fan mode : index = 16, count = 3
+char string119[3] = "Off"
+char string120[2] = "On"
+char string121[2] = "NO"// Damper dly off - fire, Dehum tmp min stpt, Enable all obj., Room unit, Humidity, Dehumidification, Common alarm, Outs air dampr fdbk, Exh air dampr fdbk, Extract air pressure, Supply air pressure, Supply air pressure switch, Air flow switch, Filter alarm, Fresh air filter, Supply filter, Extract filter, Exhaust filter, 2 Aux supply filter, 3 Aux supply filter, 2 Aux extract filter, 3 Aux extract filter, Remote start, Outdoor temperature, Supply air temp, Extract air temp, Room tmp sensor, Tmp before cooler, Tmp after cooler, B11-Temperature, B12-Temperature, Humidifier, Outs air hum rel, Extract air hum rel, Room humidity rel, Cooling pump, Compressor, Fire damper closed, External setpoint, Room unit, Duct pres stpt by rm unit, Following system, Fan state, Supply fan, Supply VAVs , Fire damper closed, Hrec frost protect, Pre heating, Free cooling, Mixing damper, Heating, Cooling, El heating, El heater on ext, 2 El heating, 3 El heating, VRF in sequence, VRF reg by dT, VRF vent mode, VRF auto mode, VRF 2, Siphon heater, Piping heater : index = 19, count = 2
+char string122[3] = "YES"
+char string123[4] = "Null"// Fire mode : index = 21, count = 5
+char string124[7] = "SFEFOff"
+char string125[5] = "EFOff"
+char string126[5] = "SFOff"
+char string127[6] = "SFEFOn"
+char string128[5] = "Other"// Scale pressure supply fan, Scale pressure extract fan : index = 26, count = 5
+char string129[6] = "1000Pa"
+char string130[6] = "2000Pa"
+char string131[6] = "3000Pa"
+char string132[6] = "5000Pa"
+char string133[3] = "Off"// Modbus fan error, Cascade controller, Disable by outs tmp, Auto configuration IOs : index = 31, count = 2
+char string134[2] = "On"
+char string135[7] = "Disable"// El heating : index = 33, count = 8
+char string136[3] = "Reg"
+char string137[7] = "Reg+St1"
+char string138[7] = "Reg+St2"
+char string139[7] = "Reg+St3"
+char string140[3] = "St1"
+char string141[3] = "St2"
+char string142[3] = "St3"
+char string143[3] = "Fan"// Air quality control : index = 41, count = 3
+char string144[6] = "MixDmp"
+char string145[10] = "Fan+MixDmp"
+char string146[3] = "Avg"// Air quality mix : index = 44, count = 3
+char string147[3] = "Min"
+char string148[3] = "Max"
+char string149[4] = "Norm"// Common alarm polarity : index = 47, count = 2
+char string150[3] = "Rev"
+char string151[6] = "Htg+Dz"// Tmp stpt selection, Tmp stpt selection : index = 49, count = 3
+char string152[7] = "Htg/Clg"
+char string153[8] = "HtgCurve"
+char string154[1] = "0"// Extract air pressure switch, Air quality, Aux tmp sensor, Fans nr : index = 52, count = 10
+char string155[1] = "1"
+char string156[1] = "2"
+char string157[1] = "3"
+char string158[1] = "4"
+char string159[1] = "5"
+char string160[1] = "6"
+char string161[1] = "7"
+char string162[1] = "8"
+char string163[1] = "9"
+char string164[4] = "None"// Outside air temp : index = 62, count = 2
+char string165[3] = "Yes"
+char string166[6] = "ppmVol"// Fan control mode : index = 64, count = 6
+char string167[8] = "ppmPress"
+char string168[6] = "Volume"
+char string169[8] = "Pressure"
+char string170[10] = "FixedSpeed"
+char string171[6] = "Direct"
+char string172[2] = "No"// Outputs fans : index = 70, count = 4
+char string173[5] = "SFStt"
+char string174[5] = "EFStt"
+char string175[11] = "SFStt+EFStt"
+char string176[2] = "No"// Dampers : index = 74, count = 4
+char string177[3] = "Out"
+char string178[3] = "Exh"
+char string179[7] = "Out+Exh"
+char string180[7] = "Disable"// Extract fan : index = 78, count = 4
+char string181[7] = "Default"
+char string182[9] = "Fix Speed"
+char string183[6] = "Direct"
+char string184[7] = "Disable"// 2 Extract fan, 3 Extract fan, 4 Extract fan, 5 Extract fan, 6 Extract fan, 7 Extract fan, 8 Extract fan, 9 Extract fan : index = 82, count = 3
+char string185[9] = "Fix Speed"
+char string186[6] = "Direct"
+char string187[2] = "NO"// Chovr type select : index = 85, count = 4
+char string188[10] = "ChovrTstat"
+char string189[9] = "ChovrSens"
+char string190[8] = "CoilSens"
+char string191[6] = "NoHREC"// Heat recovery : index = 89, count = 5
+char string192[9] = "PlateHREC"
+char string193[9] = "Rothoterm"
+char string194[9] = "Polyblock"
+char string195[10] = "GlycolHREC"
+char string196[5] = "NoVRF"// VRF type sel : index = 94, count = 7
+char string197[11] = "Mitsubishi1"
+char string198[11] = "Mitsubishi2"
+char string199[11] = "Mitsubishi3"
+char string200[6] = "Daikin"
+char string201[11] = "SamsungAlfa"
+char string202[10] = "RTD10_FDP4"
+
+// Language: 2
+char string203[4] = "Auto"// Operating mode, Act Operating mode : index = 0, count = 6
+char string204[3] = "Off"
+char string205[9] = "BuildProt"
+char string206[7] = "Economy"
+char string207[7] = "Comfort"
+char string208[11] = "FreeCooling"
+char string209[5] = "SplyT"// Tmp control mode : index = 6, count = 3
+char string210[4] = "ExtT"
+char string211[5] = "RoomT"
+char string212[5] = "SplyH"// Hum control mode : index = 9, count = 3
+char string213[4] = "ExtH"
+char string214[3] = "RmH"
+char string215[9] = "Hum/Dehum"// Hum stpt selection : index = 12, count = 4
+char string216[9] = "+/- 1/2Dz"
+char string217[6] = "Hum+Dz"
+char string218[8] = "Dehum-Dz"
+char string219[4] = "Auto"// 2 Extract fan mode, 3 Extract fan mode, 4 Extract fan mode, 5 Extract fan mode, 6 Extract fan mode, 7 Extract fan mode, 8 Extract fan mode, 9 Extract fan mode : index = 16, count = 3
+char string220[3] = "Off"
+char string221[2] = "On"
+char string222[2] = "NO"// Damper dly off - fire, Dehum tmp min stpt, Enable all obj., Room unit, Humidity, Dehumidification, Common alarm, Outs air dampr fdbk, Exh air dampr fdbk, Extract air pressure, Supply air pressure, Supply air pressure switch, Air flow switch, Filter alarm, Fresh air filter, Supply filter, Extract filter, Exhaust filter, 2 Aux supply filter, 3 Aux supply filter, 2 Aux extract filter, 3 Aux extract filter, Remote start, Outdoor temperature, Supply air temp, Extract air temp, Room tmp sensor, Tmp before cooler, Tmp after cooler, B11-Temperature, B12-Temperature, Humidifier, Outs air hum rel, Extract air hum rel, Room humidity rel, Cooling pump, Compressor, Fire damper closed, External setpoint, Room unit, Duct pres stpt by rm unit, Following system, Fan state, Supply fan, Supply VAVs , Fire damper closed, Hrec frost protect, Pre heating, Free cooling, Mixing damper, Heating, Cooling, El heating, El heater on ext, 2 El heating, 3 El heating, VRF in sequence, VRF reg by dT, VRF vent mode, VRF auto mode, VRF 2, Siphon heater, Piping heater : index = 19, count = 2
+char string223[3] = "YES"
+char string224[4] = "Null"// Fire mode : index = 21, count = 5
+char string225[7] = "SFEFOff"
+char string226[5] = "EFOff"
+char string227[5] = "SFOff"
+char string228[6] = "SFEFOn"
+char string229[5] = "Other"// Scale pressure supply fan, Scale pressure extract fan : index = 26, count = 5
+char string230[6] = "1000Pa"
+char string231[6] = "2000Pa"
+char string232[6] = "3000Pa"
+char string233[6] = "5000Pa"
+char string234[3] = "Off"// Modbus fan error, Cascade controller, Disable by outs tmp, Auto configuration IOs : index = 31, count = 2
+char string235[2] = "On"
+char string236[7] = "Disable"// El heating : index = 33, count = 8
+char string237[3] = "Reg"
+char string238[7] = "Reg+St1"
+char string239[7] = "Reg+St2"
+char string240[7] = "Reg+St3"
+char string241[3] = "St1"
+char string242[3] = "St2"
+char string243[3] = "St4"
+char string244[3] = "Fan"// Air quality control : index = 41, count = 3
+char string245[6] = "MixDmp"
+char string246[10] = "Fan+MixDmp"
+char string247[3] = "Avg"// Air quality mix : index = 44, count = 3
+char string248[3] = "Min"
+char string249[3] = "Max"
+char string250[4] = "Norm"// Common alarm polarity : index = 47, count = 2
+char string251[3] = "Rev"
+char string252[6] = "Htg+Dz"// Tmp stpt selection, Tmp stpt selection : index = 49, count = 3
+char string253[7] = "Htg/Clg"
+char string254[8] = "HtgCurve"
+char string255[1] = "0"// Extract air pressure switch, Air quality, Aux tmp sensor, Fans nr : index = 52, count = 10
+char string256[1] = "1"
+char string257[1] = "2"
+char string258[1] = "3"
+char string259[1] = "4"
+char string260[1] = "5"
+char string261[1] = "6"
+char string262[1] = "7"
+char string263[1] = "8"
+char string264[1] = "9"
+char string265[4] = "None"// Outside air temp : index = 62, count = 2
+char string266[3] = "Yes"
+char string267[6] = "ppmVol"// Fan control mode : index = 64, count = 6
+char string268[8] = "ppmPress"
+char string269[6] = "Volume"
+char string270[8] = "Pressure"
+char string271[10] = "FixedSpeed"
+char string272[6] = "Direct"
+char string273[2] = "No"// Outputs fans : index = 70, count = 4
+char string274[5] = "SFStt"
+char string275[5] = "EFStt"
+char string276[11] = "SFStt+EFStt"
+char string277[2] = "No"// Dampers : index = 74, count = 4
+char string278[3] = "Out"
+char string279[3] = "Exh"
+char string280[7] = "Out+Exh"
+char string281[7] = "Disable"// Extract fan : index = 78, count = 4
+char string282[7] = "Default"
+char string283[9] = "Fix Speed"
+char string284[6] = "Direct"
+char string285[7] = "Disable"// 2 Extract fan, 3 Extract fan, 4 Extract fan, 5 Extract fan, 6 Extract fan, 7 Extract fan, 8 Extract fan, 9 Extract fan : index = 82, count = 3
+char string286[9] = "Fix Speed"
+char string287[6] = "Direct"
+char string288[2] = "NO"// Chovr type select : index = 85, count = 4
+char string289[10] = "ChovrTstat"
+char string290[9] = "ChovrSens"
+char string291[8] = "CoilSens"
+char string292[6] = "NoHREC"// Heat recovery : index = 89, count = 5
+char string293[9] = "PlateHREC"
+char string294[9] = "Rothoterm"
+char string295[9] = "Polyblock"
+char string296[10] = "GlycolHREC"
+char string297[5] = "NoVRF"// VRF type sel : index = 94, count = 7
+char string298[11] = "Mitsubishi1"
+char string299[11] = "Mitsubishi2"
+char string300[11] = "Mitsubishi3"
+char string301[6] = "Daikin"
+char string302[11] = "SamsungAlfa"
+char string303[10] = "RTD10_FDP5"
+
+// Language: 3
+char string304[4] = "Auto"// Operating mode, Act Operating mode : index = 0, count = 6
+char string305[3] = "Off"
+char string306[9] = "BuildProt"
+char string307[7] = "Economy"
+char string308[7] = "Comfort"
+char string309[11] = "FreeCooling"
+char string310[5] = "SplyT"// Tmp control mode : index = 6, count = 3
+char string311[4] = "ExtT"
+char string312[5] = "RoomT"
+char string313[5] = "SplyH"// Hum control mode : index = 9, count = 3
+char string314[4] = "ExtH"
+char string315[3] = "RmH"
+char string316[9] = "Hum/Dehum"// Hum stpt selection : index = 12, count = 4
+char string317[9] = "+/- 1/2Dz"
+char string318[6] = "Hum+Dz"
+char string319[8] = "Dehum-Dz"
+char string320[4] = "Auto"// 2 Extract fan mode, 3 Extract fan mode, 4 Extract fan mode, 5 Extract fan mode, 6 Extract fan mode, 7 Extract fan mode, 8 Extract fan mode, 9 Extract fan mode : index = 16, count = 3
+char string321[3] = "Off"
+char string322[2] = "On"
+char string323[2] = "NO"// Damper dly off - fire, Dehum tmp min stpt, Enable all obj., Room unit, Humidity, Dehumidification, Common alarm, Outs air dampr fdbk, Exh air dampr fdbk, Extract air pressure, Supply air pressure, Supply air pressure switch, Air flow switch, Filter alarm, Fresh air filter, Supply filter, Extract filter, Exhaust filter, 2 Aux supply filter, 3 Aux supply filter, 2 Aux extract filter, 3 Aux extract filter, Remote start, Outdoor temperature, Supply air temp, Extract air temp, Room tmp sensor, Tmp before cooler, Tmp after cooler, B11-Temperature, B12-Temperature, Humidifier, Outs air hum rel, Extract air hum rel, Room humidity rel, Cooling pump, Compressor, Fire damper closed, External setpoint, Room unit, Duct pres stpt by rm unit, Following system, Fan state, Supply fan, Supply VAVs , Fire damper closed, Hrec frost protect, Pre heating, Free cooling, Mixing damper, Heating, Cooling, El heating, El heater on ext, 2 El heating, 3 El heating, VRF in sequence, VRF reg by dT, VRF vent mode, VRF auto mode, VRF 2, Siphon heater, Piping heater : index = 19, count = 2
+char string324[3] = "YES"
+char string325[4] = "Null"// Fire mode : index = 21, count = 5
+char string326[7] = "SFEFOff"
+char string327[5] = "EFOff"
+char string328[5] = "SFOff"
+char string329[6] = "SFEFOn"
+char string330[5] = "Other"// Scale pressure supply fan, Scale pressure extract fan : index = 26, count = 5
+char string331[6] = "1000Pa"
+char string332[6] = "2000Pa"
+char string333[6] = "3000Pa"
+char string334[6] = "5000Pa"
+char string335[3] = "Off"// Modbus fan error, Cascade controller, Disable by outs tmp, Auto configuration IOs : index = 31, count = 2
+char string336[2] = "On"
+char string337[7] = "Disable"// El heating : index = 33, count = 8
+char string338[3] = "Reg"
+char string339[7] = "Reg+St1"
+char string340[7] = "Reg+St2"
+char string341[7] = "Reg+St3"
+char string342[3] = "St1"
+char string343[3] = "St2"
+char string344[3] = "St5"
+char string345[3] = "Fan"// Air quality control : index = 41, count = 3
+char string346[6] = "MixDmp"
+char string347[10] = "Fan+MixDmp"
+char string348[3] = "Avg"// Air quality mix : index = 44, count = 3
+char string349[3] = "Min"
+char string350[3] = "Max"
+char string351[4] = "Norm"// Common alarm polarity : index = 47, count = 2
+char string352[3] = "Rev"
+char string353[6] = "Htg+Dz"// Tmp stpt selection, Tmp stpt selection : index = 49, count = 3
+char string354[7] = "Htg/Clg"
+char string355[8] = "HtgCurve"
+char string356[1] = "0"// Extract air pressure switch, Air quality, Aux tmp sensor, Fans nr : index = 52, count = 10
+char string357[1] = "1"
+char string358[1] = "2"
+char string359[1] = "3"
+char string360[1] = "4"
+char string361[1] = "5"
+char string362[1] = "6"
+char string363[1] = "7"
+char string364[1] = "8"
+char string365[1] = "9"
+char string366[4] = "None"// Outside air temp : index = 62, count = 2
+char string367[3] = "Yes"
+char string368[6] = "ppmVol"// Fan control mode : index = 64, count = 6
+char string369[8] = "ppmPress"
+char string370[6] = "Volume"
+char string371[8] = "Pressure"
+char string372[10] = "FixedSpeed"
+char string373[6] = "Direct"
+char string374[2] = "No"// Outputs fans : index = 70, count = 4
+char string375[5] = "SFStt"
+char string376[5] = "EFStt"
+char string377[11] = "SFStt+EFStt"
+char string378[2] = "No"// Dampers : index = 74, count = 4
+char string379[3] = "Out"
+char string380[3] = "Exh"
+char string381[7] = "Out+Exh"
+char string382[7] = "Disable"// Extract fan : index = 78, count = 4
+char string383[7] = "Default"
+char string384[9] = "Fix Speed"
+char string385[6] = "Direct"
+char string386[7] = "Disable"// 2 Extract fan, 3 Extract fan, 4 Extract fan, 5 Extract fan, 6 Extract fan, 7 Extract fan, 8 Extract fan, 9 Extract fan : index = 82, count = 3
+char string387[9] = "Fix Speed"
+char string388[6] = "Direct"
+char string389[2] = "NO"// Chovr type select : index = 85, count = 4
+char string390[10] = "ChovrTstat"
+char string391[9] = "ChovrSens"
+char string392[8] = "CoilSens"
+char string393[6] = "NoHREC"// Heat recovery : index = 89, count = 5
+char string394[9] = "PlateHREC"
+char string395[9] = "Rothoterm"
+char string396[9] = "Polyblock"
+char string397[10] = "GlycolHREC"
+char string398[5] = "NoVRF"// VRF type sel : index = 94, count = 7
+char string399[11] = "Mitsubishi1"
+char string400[11] = "Mitsubishi2"
+char string401[11] = "Mitsubishi3"
+char string402[6] = "Daikin"
+char string403[11] = "SamsungAlfa"
+char string404[10] = "RTD10_FDP6"
+
+// Language: 4
+char string405[4] = "Auto"// Operating mode, Act Operating mode : index = 0, count = 6
+char string406[3] = "Off"
+char string407[9] = "BuildProt"
+char string408[7] = "Economy"
+char string409[7] = "Comfort"
+char string410[11] = "FreeCooling"
+char string411[5] = "SplyT"// Tmp control mode : index = 6, count = 3
+char string412[4] = "ExtT"
+char string413[5] = "RoomT"
+char string414[5] = "SplyH"// Hum control mode : index = 9, count = 3
+char string415[4] = "ExtH"
+char string416[3] = "RmH"
+char string417[9] = "Hum/Dehum"// Hum stpt selection : index = 12, count = 4
+char string418[9] = "+/- 1/2Dz"
+char string419[6] = "Hum+Dz"
+char string420[8] = "Dehum-Dz"
+char string421[4] = "Auto"// 2 Extract fan mode, 3 Extract fan mode, 4 Extract fan mode, 5 Extract fan mode, 6 Extract fan mode, 7 Extract fan mode, 8 Extract fan mode, 9 Extract fan mode : index = 16, count = 3
+char string422[3] = "Off"
+char string423[2] = "On"
+char string424[2] = "NO"// Damper dly off - fire, Dehum tmp min stpt, Enable all obj., Room unit, Humidity, Dehumidification, Common alarm, Outs air dampr fdbk, Exh air dampr fdbk, Extract air pressure, Supply air pressure, Supply air pressure switch, Air flow switch, Filter alarm, Fresh air filter, Supply filter, Extract filter, Exhaust filter, 2 Aux supply filter, 3 Aux supply filter, 2 Aux extract filter, 3 Aux extract filter, Remote start, Outdoor temperature, Supply air temp, Extract air temp, Room tmp sensor, Tmp before cooler, Tmp after cooler, B11-Temperature, B12-Temperature, Humidifier, Outs air hum rel, Extract air hum rel, Room humidity rel, Cooling pump, Compressor, Fire damper closed, External setpoint, Room unit, Duct pres stpt by rm unit, Following system, Fan state, Supply fan, Supply VAVs , Fire damper closed, Hrec frost protect, Pre heating, Free cooling, Mixing damper, Heating, Cooling, El heating, El heater on ext, 2 El heating, 3 El heating, VRF in sequence, VRF reg by dT, VRF vent mode, VRF auto mode, VRF 2, Siphon heater, Piping heater : index = 19, count = 2
+char string425[3] = "YES"
+char string426[4] = "Null"// Fire mode : index = 21, count = 5
+char string427[7] = "SFEFOff"
+char string428[5] = "EFOff"
+char string429[5] = "SFOff"
+char string430[6] = "SFEFOn"
+char string431[5] = "Other"// Scale pressure supply fan, Scale pressure extract fan : index = 26, count = 5
+char string432[6] = "1000Pa"
+char string433[6] = "2000Pa"
+char string434[6] = "3000Pa"
+char string435[6] = "5000Pa"
+char string436[3] = "Off"// Modbus fan error, Cascade controller, Disable by outs tmp, Auto configuration IOs : index = 31, count = 2
+char string437[2] = "On"
+char string438[7] = "Disable"// El heating : index = 33, count = 8
+char string439[3] = "Reg"
+char string440[7] = "Reg+St1"
+char string441[7] = "Reg+St2"
+char string442[7] = "Reg+St3"
+char string443[3] = "St1"
+char string444[3] = "St2"
+char string445[3] = "St6"
+char string446[3] = "Fan"// Air quality control : index = 41, count = 3
+char string447[6] = "MixDmp"
+char string448[10] = "Fan+MixDmp"
+char string449[3] = "Avg"// Air quality mix : index = 44, count = 3
+char string450[3] = "Min"
+char string451[3] = "Max"
+char string452[4] = "Norm"// Common alarm polarity : index = 47, count = 2
+char string453[3] = "Rev"
+char string454[6] = "Htg+Dz"// Tmp stpt selection, Tmp stpt selection : index = 49, count = 3
+char string455[7] = "Htg/Clg"
+char string456[8] = "HtgCurve"
+char string457[1] = "0"// Extract air pressure switch, Air quality, Aux tmp sensor, Fans nr : index = 52, count = 10
+char string458[1] = "1"
+char string459[1] = "2"
+char string460[1] = "3"
+char string461[1] = "4"
+char string462[1] = "5"
+char string463[1] = "6"
+char string464[1] = "7"
+char string465[1] = "8"
+char string466[1] = "9"
+char string467[4] = "None"// Outside air temp : index = 62, count = 2
+char string468[3] = "Yes"
+char string469[6] = "ppmVol"// Fan control mode : index = 64, count = 6
+char string470[8] = "ppmPress"
+char string471[6] = "Volume"
+char string472[8] = "Pressure"
+char string473[10] = "FixedSpeed"
+char string474[6] = "Direct"
+char string475[2] = "No"// Outputs fans : index = 70, count = 4
+char string476[5] = "SFStt"
+char string477[5] = "EFStt"
+char string478[11] = "SFStt+EFStt"
+char string479[2] = "No"// Dampers : index = 74, count = 4
+char string480[3] = "Out"
+char string481[3] = "Exh"
+char string482[7] = "Out+Exh"
+char string483[7] = "Disable"// Extract fan : index = 78, count = 4
+char string484[7] = "Default"
+char string485[9] = "Fix Speed"
+char string486[6] = "Direct"
+char string487[7] = "Disable"// 2 Extract fan, 3 Extract fan, 4 Extract fan, 5 Extract fan, 6 Extract fan, 7 Extract fan, 8 Extract fan, 9 Extract fan : index = 82, count = 3
+char string488[9] = "Fix Speed"
+char string489[6] = "Direct"
+char string490[2] = "NO"// Chovr type select : index = 85, count = 4
+char string491[10] = "ChovrTstat"
+char string492[9] = "ChovrSens"
+char string493[8] = "CoilSens"
+char string494[6] = "NoHREC"// Heat recovery : index = 89, count = 5
+char string495[9] = "PlateHREC"
+char string496[9] = "Rothoterm"
+char string497[9] = "Polyblock"
+char string498[10] = "GlycolHREC"
+char string499[5] = "NoVRF"// VRF type sel : index = 94, count = 7
+char string500[11] = "Mitsubishi1"
+char string501[11] = "Mitsubishi2"
+char string502[11] = "Mitsubishi3"
+char string503[6] = "Daikin"
+char string504[11] = "SamsungAlfa"
+char string505[10] = "RTD10_FDP7"
+
+StringSet(string1[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 0 * 10, 4)
+StringSet(string2[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 1 * 10, 3)
+StringSet(string3[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 2 * 10, 9)
+StringSet(string4[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 3 * 10, 7)
+StringSet(string5[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 4 * 10, 7)
+StringSet(string6[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 5 * 10, 11)
+StringSet(string7[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 6 * 10, 5)
+StringSet(string8[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 7 * 10, 4)
+StringSet(string9[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 8 * 10, 5)
+StringSet(string10[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 9 * 10, 5)
+StringSet(string11[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 10 * 10, 4)
+StringSet(string12[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 11 * 10, 3)
+StringSet(string13[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 12 * 10, 9)
+StringSet(string14[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 13 * 10, 9)
+StringSet(string15[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 14 * 10, 6)
+StringSet(string16[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 15 * 10, 8)
+StringSet(string17[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 16 * 10, 4)
+StringSet(string18[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 17 * 10, 3)
+StringSet(string19[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 18 * 10, 2)
+StringSet(string20[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 19 * 10, 2)
+StringSet(string21[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 20 * 10, 3)
+StringSet(string22[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 21 * 10, 4)
+StringSet(string23[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 22 * 10, 7)
+StringSet(string24[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 23 * 10, 5)
+StringSet(string25[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 24 * 10, 5)
+StringSet(string26[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 25 * 10, 6)
+StringSet(string27[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 26 * 10, 5)
+StringSet(string28[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 27 * 10, 6)
+StringSet(string29[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 28 * 10, 6)
+StringSet(string30[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 29 * 10, 6)
+StringSet(string31[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 30 * 10, 6)
+StringSet(string32[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 31 * 10, 3)
+StringSet(string33[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 32 * 10, 2)
+StringSet(string34[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 33 * 10, 7)
+StringSet(string35[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 34 * 10, 3)
+StringSet(string36[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 35 * 10, 7)
+StringSet(string37[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 36 * 10, 7)
+StringSet(string38[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 37 * 10, 7)
+StringSet(string39[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 38 * 10, 3)
+StringSet(string40[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 39 * 10, 3)
+StringSet(string41[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 40 * 10, 3)
+StringSet(string42[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 41 * 10, 3)
+StringSet(string43[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 42 * 10, 6)
+StringSet(string44[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 43 * 10, 10)
+StringSet(string45[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 44 * 10, 3)
+StringSet(string46[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 45 * 10, 3)
+StringSet(string47[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 46 * 10, 3)
+StringSet(string48[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 47 * 10, 4)
+StringSet(string49[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 48 * 10, 3)
+StringSet(string50[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 49 * 10, 6)
+StringSet(string51[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 50 * 10, 7)
+StringSet(string52[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 51 * 10, 8)
+StringSet(string53[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 52 * 10, 1)
+StringSet(string54[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 53 * 10, 1)
+StringSet(string55[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 54 * 10, 1)
+StringSet(string56[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 55 * 10, 1)
+StringSet(string57[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 56 * 10, 1)
+StringSet(string58[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 57 * 10, 1)
+StringSet(string59[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 58 * 10, 1)
+StringSet(string60[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 59 * 10, 1)
+StringSet(string61[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 60 * 10, 1)
+StringSet(string62[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 61 * 10, 1)
+StringSet(string63[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 62 * 10, 4)
+StringSet(string64[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 63 * 10, 3)
+StringSet(string65[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 64 * 10, 6)
+StringSet(string66[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 65 * 10, 8)
+StringSet(string67[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 66 * 10, 6)
+StringSet(string68[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 67 * 10, 8)
+StringSet(string69[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 68 * 10, 10)
+StringSet(string70[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 69 * 10, 6)
+StringSet(string71[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 70 * 10, 2)
+StringSet(string72[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 71 * 10, 5)
+StringSet(string73[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 72 * 10, 5)
+StringSet(string74[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 73 * 10, 11)
+StringSet(string75[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 74 * 10, 2)
+StringSet(string76[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 75 * 10, 3)
+StringSet(string77[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 76 * 10, 3)
+StringSet(string78[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 77 * 10, 7)
+StringSet(string79[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 78 * 10, 7)
+StringSet(string80[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 79 * 10, 7)
+StringSet(string81[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 80 * 10, 9)
+StringSet(string82[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 81 * 10, 6)
+StringSet(string83[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 82 * 10, 7)
+StringSet(string84[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 83 * 10, 9)
+StringSet(string85[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 84 * 10, 6)
+StringSet(string86[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 85 * 10, 2)
+StringSet(string87[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 86 * 10, 10)
+StringSet(string88[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 87 * 10, 9)
+StringSet(string89[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 88 * 10, 8)
+StringSet(string90[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 89 * 10, 6)
+StringSet(string91[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 90 * 10, 9)
+StringSet(string92[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 91 * 10, 9)
+StringSet(string93[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 92 * 10, 9)
+StringSet(string94[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 93 * 10, 10)
+StringSet(string95[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 94 * 10, 5)
+StringSet(string96[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 95 * 10, 11)
+StringSet(string97[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 96 * 10, 11)
+StringSet(string98[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 97 * 10, 11)
+StringSet(string99[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 98 * 10, 6)
+StringSet(string100[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 99 * 10, 11)
+StringSet(string101[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 100 * 10, 10)
+StringSet(string102[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 200 * 10, 4)
+StringSet(string103[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 201 * 10, 3)
+StringSet(string104[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 202 * 10, 9)
+StringSet(string105[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 203 * 10, 7)
+StringSet(string106[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 204 * 10, 7)
+StringSet(string107[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 205 * 10, 11)
+StringSet(string108[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 206 * 10, 5)
+StringSet(string109[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 207 * 10, 4)
+StringSet(string110[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 208 * 10, 5)
+StringSet(string111[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 209 * 10, 5)
+StringSet(string112[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 210 * 10, 4)
+StringSet(string113[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 211 * 10, 3)
+StringSet(string114[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 212 * 10, 9)
+StringSet(string115[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 213 * 10, 9)
+StringSet(string116[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 214 * 10, 6)
+StringSet(string117[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 215 * 10, 8)
+StringSet(string118[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 216 * 10, 4)
+StringSet(string119[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 217 * 10, 3)
+StringSet(string120[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 218 * 10, 2)
+StringSet(string121[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 219 * 10, 2)
+StringSet(string122[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 220 * 10, 3)
+StringSet(string123[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 221 * 10, 4)
+StringSet(string124[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 222 * 10, 7)
+StringSet(string125[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 223 * 10, 5)
+StringSet(string126[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 224 * 10, 5)
+StringSet(string127[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 225 * 10, 6)
+StringSet(string128[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 226 * 10, 5)
+StringSet(string129[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 227 * 10, 6)
+StringSet(string130[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 228 * 10, 6)
+StringSet(string131[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 229 * 10, 6)
+StringSet(string132[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 230 * 10, 6)
+StringSet(string133[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 231 * 10, 3)
+StringSet(string134[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 232 * 10, 2)
+StringSet(string135[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 233 * 10, 7)
+StringSet(string136[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 234 * 10, 3)
+StringSet(string137[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 235 * 10, 7)
+StringSet(string138[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 236 * 10, 7)
+StringSet(string139[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 237 * 10, 7)
+StringSet(string140[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 238 * 10, 3)
+StringSet(string141[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 239 * 10, 3)
+StringSet(string142[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 240 * 10, 3)
+StringSet(string143[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 241 * 10, 3)
+StringSet(string144[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 242 * 10, 6)
+StringSet(string145[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 243 * 10, 10)
+StringSet(string146[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 244 * 10, 3)
+StringSet(string147[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 245 * 10, 3)
+StringSet(string148[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 246 * 10, 3)
+StringSet(string149[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 247 * 10, 4)
+StringSet(string150[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 248 * 10, 3)
+StringSet(string151[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 249 * 10, 6)
+StringSet(string152[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 250 * 10, 7)
+StringSet(string153[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 251 * 10, 8)
+StringSet(string154[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 252 * 10, 1)
+StringSet(string155[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 253 * 10, 1)
+StringSet(string156[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 254 * 10, 1)
+StringSet(string157[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 255 * 10, 1)
+StringSet(string158[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 256 * 10, 1)
+StringSet(string159[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 257 * 10, 1)
+StringSet(string160[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 258 * 10, 1)
+StringSet(string161[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 259 * 10, 1)
+StringSet(string162[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 260 * 10, 1)
+StringSet(string163[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 261 * 10, 1)
+StringSet(string164[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 262 * 10, 4)
+StringSet(string165[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 263 * 10, 3)
+StringSet(string166[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 264 * 10, 6)
+StringSet(string167[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 265 * 10, 8)
+StringSet(string168[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 266 * 10, 6)
+StringSet(string169[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 267 * 10, 8)
+StringSet(string170[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 268 * 10, 10)
+StringSet(string171[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 269 * 10, 6)
+StringSet(string172[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 270 * 10, 2)
+StringSet(string173[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 271 * 10, 5)
+StringSet(string174[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 272 * 10, 5)
+StringSet(string175[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 273 * 10, 11)
+StringSet(string176[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 274 * 10, 2)
+StringSet(string177[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 275 * 10, 3)
+StringSet(string178[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 276 * 10, 3)
+StringSet(string179[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 277 * 10, 7)
+StringSet(string180[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 278 * 10, 7)
+StringSet(string181[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 279 * 10, 7)
+StringSet(string182[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 280 * 10, 9)
+StringSet(string183[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 281 * 10, 6)
+StringSet(string184[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 282 * 10, 7)
+StringSet(string185[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 283 * 10, 9)
+StringSet(string186[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 284 * 10, 6)
+StringSet(string187[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 285 * 10, 2)
+StringSet(string188[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 286 * 10, 10)
+StringSet(string189[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 287 * 10, 9)
+StringSet(string190[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 288 * 10, 8)
+StringSet(string191[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 289 * 10, 6)
+StringSet(string192[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 290 * 10, 9)
+StringSet(string193[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 291 * 10, 9)
+StringSet(string194[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 292 * 10, 9)
+StringSet(string195[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 293 * 10, 10)
+StringSet(string196[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 294 * 10, 5)
+StringSet(string197[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 295 * 10, 11)
+StringSet(string198[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 296 * 10, 11)
+StringSet(string199[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 297 * 10, 11)
+StringSet(string200[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 298 * 10, 6)
+StringSet(string201[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 299 * 10, 11)
+StringSet(string202[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 300 * 10, 10)
+StringSet(string203[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 400 * 10, 4)
+StringSet(string204[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 401 * 10, 3)
+StringSet(string205[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 402 * 10, 9)
+StringSet(string206[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 403 * 10, 7)
+StringSet(string207[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 404 * 10, 7)
+StringSet(string208[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 405 * 10, 11)
+StringSet(string209[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 406 * 10, 5)
+StringSet(string210[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 407 * 10, 4)
+StringSet(string211[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 408 * 10, 5)
+StringSet(string212[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 409 * 10, 5)
+StringSet(string213[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 410 * 10, 4)
+StringSet(string214[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 411 * 10, 3)
+StringSet(string215[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 412 * 10, 9)
+StringSet(string216[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 413 * 10, 9)
+StringSet(string217[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 414 * 10, 6)
+StringSet(string218[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 415 * 10, 8)
+StringSet(string219[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 416 * 10, 4)
+StringSet(string220[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 417 * 10, 3)
+StringSet(string221[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 418 * 10, 2)
+StringSet(string222[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 419 * 10, 2)
+StringSet(string223[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 420 * 10, 3)
+StringSet(string224[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 421 * 10, 4)
+StringSet(string225[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 422 * 10, 7)
+StringSet(string226[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 423 * 10, 5)
+StringSet(string227[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 424 * 10, 5)
+StringSet(string228[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 425 * 10, 6)
+StringSet(string229[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 426 * 10, 5)
+StringSet(string230[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 427 * 10, 6)
+StringSet(string231[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 428 * 10, 6)
+StringSet(string232[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 429 * 10, 6)
+StringSet(string233[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 430 * 10, 6)
+StringSet(string234[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 431 * 10, 3)
+StringSet(string235[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 432 * 10, 2)
+StringSet(string236[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 433 * 10, 7)
+StringSet(string237[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 434 * 10, 3)
+StringSet(string238[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 435 * 10, 7)
+StringSet(string239[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 436 * 10, 7)
+StringSet(string240[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 437 * 10, 7)
+StringSet(string241[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 438 * 10, 3)
+StringSet(string242[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 439 * 10, 3)
+StringSet(string243[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 440 * 10, 3)
+StringSet(string244[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 441 * 10, 3)
+StringSet(string245[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 442 * 10, 6)
+StringSet(string246[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 443 * 10, 10)
+StringSet(string247[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 444 * 10, 3)
+StringSet(string248[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 445 * 10, 3)
+StringSet(string249[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 446 * 10, 3)
+StringSet(string250[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 447 * 10, 4)
+StringSet(string251[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 448 * 10, 3)
+StringSet(string252[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 449 * 10, 6)
+StringSet(string253[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 450 * 10, 7)
+StringSet(string254[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 451 * 10, 8)
+StringSet(string255[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 452 * 10, 1)
+StringSet(string256[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 453 * 10, 1)
+StringSet(string257[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 454 * 10, 1)
+StringSet(string258[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 455 * 10, 1)
+StringSet(string259[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 456 * 10, 1)
+StringSet(string260[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 457 * 10, 1)
+StringSet(string261[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 458 * 10, 1)
+StringSet(string262[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 459 * 10, 1)
+StringSet(string263[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 460 * 10, 1)
+StringSet(string264[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 461 * 10, 1)
+StringSet(string265[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 462 * 10, 4)
+StringSet(string266[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 463 * 10, 3)
+StringSet(string267[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 464 * 10, 6)
+StringSet(string268[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 465 * 10, 8)
+StringSet(string269[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 466 * 10, 6)
+StringSet(string270[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 467 * 10, 8)
+StringSet(string271[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 468 * 10, 10)
+StringSet(string272[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 469 * 10, 6)
+StringSet(string273[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 470 * 10, 2)
+StringSet(string274[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 471 * 10, 5)
+StringSet(string275[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 472 * 10, 5)
+StringSet(string276[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 473 * 10, 11)
+StringSet(string277[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 474 * 10, 2)
+StringSet(string278[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 475 * 10, 3)
+StringSet(string279[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 476 * 10, 3)
+StringSet(string280[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 477 * 10, 7)
+StringSet(string281[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 478 * 10, 7)
+StringSet(string282[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 479 * 10, 7)
+StringSet(string283[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 480 * 10, 9)
+StringSet(string284[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 481 * 10, 6)
+StringSet(string285[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 482 * 10, 7)
+StringSet(string286[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 483 * 10, 9)
+StringSet(string287[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 484 * 10, 6)
+StringSet(string288[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 485 * 10, 2)
+StringSet(string289[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 486 * 10, 10)
+StringSet(string290[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 487 * 10, 9)
+StringSet(string291[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 488 * 10, 8)
+StringSet(string292[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 489 * 10, 6)
+StringSet(string293[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 490 * 10, 9)
+StringSet(string294[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 491 * 10, 9)
+StringSet(string295[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 492 * 10, 9)
+StringSet(string296[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 493 * 10, 10)
+StringSet(string297[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 494 * 10, 5)
+StringSet(string298[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 495 * 10, 11)
+StringSet(string299[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 496 * 10, 11)
+StringSet(string300[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 497 * 10, 11)
+StringSet(string301[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 498 * 10, 6)
+StringSet(string302[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 499 * 10, 11)
+StringSet(string303[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 500 * 10, 10)
+StringSet(string304[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 600 * 10, 4)
+StringSet(string305[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 601 * 10, 3)
+StringSet(string306[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 602 * 10, 9)
+StringSet(string307[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 603 * 10, 7)
+StringSet(string308[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 604 * 10, 7)
+StringSet(string309[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 605 * 10, 11)
+StringSet(string310[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 606 * 10, 5)
+StringSet(string311[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 607 * 10, 4)
+StringSet(string312[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 608 * 10, 5)
+StringSet(string313[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 609 * 10, 5)
+StringSet(string314[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 610 * 10, 4)
+StringSet(string315[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 611 * 10, 3)
+StringSet(string316[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 612 * 10, 9)
+StringSet(string317[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 613 * 10, 9)
+StringSet(string318[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 614 * 10, 6)
+StringSet(string319[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 615 * 10, 8)
+StringSet(string320[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 616 * 10, 4)
+StringSet(string321[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 617 * 10, 3)
+StringSet(string322[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 618 * 10, 2)
+StringSet(string323[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 619 * 10, 2)
+StringSet(string324[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 620 * 10, 3)
+StringSet(string325[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 621 * 10, 4)
+StringSet(string326[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 622 * 10, 7)
+StringSet(string327[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 623 * 10, 5)
+StringSet(string328[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 624 * 10, 5)
+StringSet(string329[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 625 * 10, 6)
+StringSet(string330[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 626 * 10, 5)
+StringSet(string331[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 627 * 10, 6)
+StringSet(string332[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 628 * 10, 6)
+StringSet(string333[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 629 * 10, 6)
+StringSet(string334[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 630 * 10, 6)
+StringSet(string335[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 631 * 10, 3)
+StringSet(string336[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 632 * 10, 2)
+StringSet(string337[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 633 * 10, 7)
+StringSet(string338[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 634 * 10, 3)
+StringSet(string339[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 635 * 10, 7)
+StringSet(string340[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 636 * 10, 7)
+StringSet(string341[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 637 * 10, 7)
+StringSet(string342[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 638 * 10, 3)
+StringSet(string343[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 639 * 10, 3)
+StringSet(string344[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 640 * 10, 3)
+StringSet(string345[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 641 * 10, 3)
+StringSet(string346[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 642 * 10, 6)
+StringSet(string347[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 643 * 10, 10)
+StringSet(string348[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 644 * 10, 3)
+StringSet(string349[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 645 * 10, 3)
+StringSet(string350[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 646 * 10, 3)
+StringSet(string351[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 647 * 10, 4)
+StringSet(string352[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 648 * 10, 3)
+StringSet(string353[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 649 * 10, 6)
+StringSet(string354[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 650 * 10, 7)
+StringSet(string355[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 651 * 10, 8)
+StringSet(string356[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 652 * 10, 1)
+StringSet(string357[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 653 * 10, 1)
+StringSet(string358[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 654 * 10, 1)
+StringSet(string359[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 655 * 10, 1)
+StringSet(string360[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 656 * 10, 1)
+StringSet(string361[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 657 * 10, 1)
+StringSet(string362[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 658 * 10, 1)
+StringSet(string363[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 659 * 10, 1)
+StringSet(string364[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 660 * 10, 1)
+StringSet(string365[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 661 * 10, 1)
+StringSet(string366[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 662 * 10, 4)
+StringSet(string367[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 663 * 10, 3)
+StringSet(string368[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 664 * 10, 6)
+StringSet(string369[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 665 * 10, 8)
+StringSet(string370[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 666 * 10, 6)
+StringSet(string371[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 667 * 10, 8)
+StringSet(string372[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 668 * 10, 10)
+StringSet(string373[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 669 * 10, 6)
+StringSet(string374[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 670 * 10, 2)
+StringSet(string375[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 671 * 10, 5)
+StringSet(string376[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 672 * 10, 5)
+StringSet(string377[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 673 * 10, 11)
+StringSet(string378[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 674 * 10, 2)
+StringSet(string379[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 675 * 10, 3)
+StringSet(string380[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 676 * 10, 3)
+StringSet(string381[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 677 * 10, 7)
+StringSet(string382[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 678 * 10, 7)
+StringSet(string383[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 679 * 10, 7)
+StringSet(string384[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 680 * 10, 9)
+StringSet(string385[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 681 * 10, 6)
+StringSet(string386[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 682 * 10, 7)
+StringSet(string387[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 683 * 10, 9)
+StringSet(string388[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 684 * 10, 6)
+StringSet(string389[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 685 * 10, 2)
+StringSet(string390[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 686 * 10, 10)
+StringSet(string391[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 687 * 10, 9)
+StringSet(string392[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 688 * 10, 8)
+StringSet(string393[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 689 * 10, 6)
+StringSet(string394[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 690 * 10, 9)
+StringSet(string395[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 691 * 10, 9)
+StringSet(string396[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 692 * 10, 9)
+StringSet(string397[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 693 * 10, 10)
+StringSet(string398[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 694 * 10, 5)
+StringSet(string399[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 695 * 10, 11)
+StringSet(string400[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 696 * 10, 11)
+StringSet(string401[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 697 * 10, 11)
+StringSet(string402[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 698 * 10, 6)
+StringSet(string403[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 699 * 10, 11)
+StringSet(string404[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 700 * 10, 10)
+StringSet(string405[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 800 * 10, 4)
+StringSet(string406[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 801 * 10, 3)
+StringSet(string407[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 802 * 10, 9)
+StringSet(string408[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 803 * 10, 7)
+StringSet(string409[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 804 * 10, 7)
+StringSet(string410[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 805 * 10, 11)
+StringSet(string411[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 806 * 10, 5)
+StringSet(string412[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 807 * 10, 4)
+StringSet(string413[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 808 * 10, 5)
+StringSet(string414[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 809 * 10, 5)
+StringSet(string415[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 810 * 10, 4)
+StringSet(string416[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 811 * 10, 3)
+StringSet(string417[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 812 * 10, 9)
+StringSet(string418[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 813 * 10, 9)
+StringSet(string419[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 814 * 10, 6)
+StringSet(string420[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 815 * 10, 8)
+StringSet(string421[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 816 * 10, 4)
+StringSet(string422[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 817 * 10, 3)
+StringSet(string423[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 818 * 10, 2)
+StringSet(string424[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 819 * 10, 2)
+StringSet(string425[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 820 * 10, 3)
+StringSet(string426[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 821 * 10, 4)
+StringSet(string427[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 822 * 10, 7)
+StringSet(string428[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 823 * 10, 5)
+StringSet(string429[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 824 * 10, 5)
+StringSet(string430[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 825 * 10, 6)
+StringSet(string431[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 826 * 10, 5)
+StringSet(string432[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 827 * 10, 6)
+StringSet(string433[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 828 * 10, 6)
+StringSet(string434[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 829 * 10, 6)
+StringSet(string435[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 830 * 10, 6)
+StringSet(string436[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 831 * 10, 3)
+StringSet(string437[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 832 * 10, 2)
+StringSet(string438[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 833 * 10, 7)
+StringSet(string439[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 834 * 10, 3)
+StringSet(string440[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 835 * 10, 7)
+StringSet(string441[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 836 * 10, 7)
+StringSet(string442[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 837 * 10, 7)
+StringSet(string443[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 838 * 10, 3)
+StringSet(string444[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 839 * 10, 3)
+StringSet(string445[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 840 * 10, 3)
+StringSet(string446[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 841 * 10, 3)
+StringSet(string447[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 842 * 10, 6)
+StringSet(string448[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 843 * 10, 10)
+StringSet(string449[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 844 * 10, 3)
+StringSet(string450[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 845 * 10, 3)
+StringSet(string451[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 846 * 10, 3)
+StringSet(string452[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 847 * 10, 4)
+StringSet(string453[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 848 * 10, 3)
+StringSet(string454[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 849 * 10, 6)
+StringSet(string455[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 850 * 10, 7)
+StringSet(string456[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 851 * 10, 8)
+StringSet(string457[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 852 * 10, 1)
+StringSet(string458[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 853 * 10, 1)
+StringSet(string459[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 854 * 10, 1)
+StringSet(string460[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 855 * 10, 1)
+StringSet(string461[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 856 * 10, 1)
+StringSet(string462[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 857 * 10, 1)
+StringSet(string463[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 858 * 10, 1)
+StringSet(string464[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 859 * 10, 1)
+StringSet(string465[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 860 * 10, 1)
+StringSet(string466[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 861 * 10, 1)
+StringSet(string467[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 862 * 10, 4)
+StringSet(string468[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 863 * 10, 3)
+StringSet(string469[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 864 * 10, 6)
+StringSet(string470[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 865 * 10, 8)
+StringSet(string471[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 866 * 10, 6)
+StringSet(string472[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 867 * 10, 8)
+StringSet(string473[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 868 * 10, 10)
+StringSet(string474[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 869 * 10, 6)
+StringSet(string475[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 870 * 10, 2)
+StringSet(string476[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 871 * 10, 5)
+StringSet(string477[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 872 * 10, 5)
+StringSet(string478[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 873 * 10, 11)
+StringSet(string479[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 874 * 10, 2)
+StringSet(string480[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 875 * 10, 3)
+StringSet(string481[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 876 * 10, 3)
+StringSet(string482[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 877 * 10, 7)
+StringSet(string483[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 878 * 10, 7)
+StringSet(string484[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 879 * 10, 7)
+StringSet(string485[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 880 * 10, 9)
+StringSet(string486[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 881 * 10, 6)
+StringSet(string487[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 882 * 10, 7)
+StringSet(string488[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 883 * 10, 9)
+StringSet(string489[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 884 * 10, 6)
+StringSet(string490[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 885 * 10, 2)
+StringSet(string491[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 886 * 10, 10)
+StringSet(string492[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 887 * 10, 9)
+StringSet(string493[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 888 * 10, 8)
+StringSet(string494[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 889 * 10, 6)
+StringSet(string495[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 890 * 10, 9)
+StringSet(string496[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 891 * 10, 9)
+StringSet(string497[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 892 * 10, 9)
+StringSet(string498[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 893 * 10, 10)
+StringSet(string499[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 894 * 10, 5)
+StringSet(string500[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 895 * 10, 11)
+StringSet(string501[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 896 * 10, 11)
+StringSet(string502[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 897 * 10, 11)
+StringSet(string503[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 898 * 10, 6)
+StringSet(string504[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 899 * 10, 11)
+StringSet(string505[0], "HMI", RW, DIGITAL_STATES_STRINGS_START + 900 * 10, 10)
+
+
+end macro_command

@@ -1,0 +1,785 @@
+
+macro_command main()
+
+short DISP_STR_ID_START = 8941
+short DIGITAL_STATES_STRINGS_START = 275
+short MAX_DATA_PER_SCREEN = 9
+
+short STRING_ID_START = 6032
+short REG_START = 6932
+short ADDR_START = 6332
+short STATE_INDEX_START = 6632
+short STATE_COUNT_START = 5388
+short DISABLED_START = 344
+
+short kkID
+short stringID
+short reg
+short addr
+short index
+short count
+bool disabled
+
+short state
+bool enabled
+short setpointsCount = 0
+
+short position
+int TPConfigDW0, TPConfigDW1, TPConfigDW2, TPConfigDW3, TPConfigDW4, TPConfigDW5
+
+bool enable
+bool disable
+
+enable = true
+SetData(enable, "HMI", "ShowBufferingSpinner", 1)
+
+GetData(kkID, "HMI", "kkID", 1)
+
+reg = 4
+addr = 831
+TPConfigDW0 = GetUnsignedIntFromPLC(kkID, reg, addr)
+reg = 4
+addr = 833
+TPConfigDW1 = GetUnsignedIntFromPLC(kkID, reg, addr)
+reg = 4
+addr = 835
+TPConfigDW2 = GetUnsignedIntFromPLC(kkID, reg, addr)
+reg = 4
+addr = 837
+TPConfigDW3 = GetUnsignedIntFromPLC(kkID, reg, addr)
+reg = 4
+addr = 839
+TPConfigDW4 = GetUnsignedIntFromPLC(kkID, reg, addr)
+
+// Outs air dampr fdbk
+enabled = true
+if enabled then
+    stringID = 1
+    reg = 0
+    addr = 822
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Exh air dampr fdbk
+enabled = true
+if enabled then
+    stringID = 2
+    reg = 0
+    addr = 823
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Extract air pressure
+enabled = true
+if enabled then
+    stringID = 3
+    reg = 0
+    addr = 831
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Supply air pressure
+enabled = true
+if enabled then
+    stringID = 4
+    reg = 0
+    addr = 830
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Supply air pressure switch
+enabled = true
+if enabled then
+    stringID = 5
+    reg = 0
+    addr = 821
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Extract air pressure switch
+enabled = true
+if enabled then
+    stringID = 6
+    reg = 4
+    addr = 801
+    index = 52
+    count = 10
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Air flow switch
+enabled = true
+if enabled then
+    stringID = 7
+    reg = 0
+    addr = 825
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Filter alarm
+enabled = true
+if enabled then
+    stringID = 8
+    reg = 0
+    addr = 804
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Fresh air filter
+enabled = true
+if enabled then
+    stringID = 9
+    reg = 0
+    addr = 811
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Supply filter
+enabled = true
+if enabled then
+    stringID = 10
+    reg = 0
+    addr = 812
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Extract filter
+enabled = true
+if enabled then
+    stringID = 11
+    reg = 0
+    addr = 813
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Exhaust filter
+enabled = true
+if enabled then
+    stringID = 12
+    reg = 0
+    addr = 814
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// 2 Aux supply filter
+enabled = true
+if enabled then
+    stringID = 13
+    reg = 0
+    addr = 815
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// 3 Aux supply filter
+enabled = true
+if enabled then
+    stringID = 14
+    reg = 0
+    addr = 816
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// 2 Aux extract filter
+enabled = true
+if enabled then
+    stringID = 15
+    reg = 0
+    addr = 817
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// 3 Aux extract filter
+enabled = true
+if enabled then
+    stringID = 16
+    reg = 0
+    addr = 818
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Remote start
+enabled = true
+if enabled then
+    stringID = 17
+    reg = 0
+    addr = 803
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Air quality
+enabled = true
+if enabled then
+    stringID = 18
+    reg = 4
+    addr = 804
+    index = 52
+    count = 10
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Outdoor temperature
+enabled = true
+if enabled then
+    stringID = 19
+    reg = 0
+    addr = 847
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Outside air temp
+enabled = true
+if enabled then
+    stringID = 20
+    reg = 0
+    addr = 841
+    index = 62
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Supply air temp
+enabled = true
+if enabled then
+    stringID = 21
+    reg = 0
+    addr = 843
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Extract air temp
+enabled = true
+if enabled then
+    stringID = 22
+    reg = 0
+    addr = 842
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Room tmp sensor
+enabled = true
+if enabled then
+    stringID = 23
+    reg = 0
+    addr = 846
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Tmp before cooler
+enabled = true
+if enabled then
+    stringID = 24
+    reg = 0
+    addr = 844
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Tmp after cooler
+enabled = true
+if enabled then
+    stringID = 25
+    reg = 0
+    addr = 845
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// B11-Temperature
+enabled = true
+if enabled then
+    stringID = 26
+    reg = 0
+    addr = 848
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// B12-Temperature
+enabled = true
+if enabled then
+    stringID = 27
+    reg = 0
+    addr = 849
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Aux tmp sensor
+enabled = true
+if enabled then
+    stringID = 28
+    reg = 4
+    addr = 803
+    index = 52
+    count = 10
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Humidifier
+enabled = true
+if enabled then
+    stringID = 29
+    reg = 0
+    addr = 911
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Outs air hum rel
+enabled = true
+if enabled then
+    stringID = 30
+    reg = 0
+    addr = 861
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Extract air hum rel
+enabled = true
+if enabled then
+    stringID = 31
+    reg = 0
+    addr = 862
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Room humidity rel
+enabled = true
+if enabled then
+    stringID = 32
+    reg = 0
+    addr = 863
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Cooling pump
+enabled = true
+if enabled then
+    stringID = 33
+    reg = 0
+    addr = 893
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Compressor
+enabled = true
+if enabled then
+    stringID = 34
+    reg = 0
+    addr = 894
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// Fire damper closed
+enabled = true
+if enabled then
+    stringID = 35
+    reg = 0
+    addr = 824
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+// External setpoint
+enabled = true
+if enabled then
+    stringID = 36
+    reg = 0
+    addr = 885
+    index = 19
+    count = 2
+    disabled = false
+
+    SetData(stringID, "HMI", LW, STRING_ID_START + setpointsCount, 1)
+    SetData(reg, "HMI", LW, REG_START + setpointsCount, 1)
+    SetData(addr, "HMI", LW, ADDR_START + setpointsCount, 1)
+    SetData(index, "HMI", LW, STATE_INDEX_START + setpointsCount, 1)
+    SetData(count, "HMI", LW, STATE_COUNT_START + setpointsCount, 1)
+    SetData(disabled, "HMI", LB, DISABLED_START + setpointsCount, 1)
+
+    setpointsCount = setpointsCount + 1
+end if
+
+SetData(setpointsCount, "HMI", "SetpointsCount", 1)
+
+disable = false
+SetData(disable, "HMI", "ShowBufferingSpinner", 1)
+
+disable = true
+SetData(disable, "HMI", "ScrollLeftDisable", 1)
+SetData(disable, "HMI", "ScrollRightDisable", 1)
+
+ASYNC_TRIG_MACRO(46)
+
+end macro_command
