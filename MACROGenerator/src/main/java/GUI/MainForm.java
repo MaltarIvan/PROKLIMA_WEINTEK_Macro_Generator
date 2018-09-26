@@ -121,24 +121,23 @@ public class MainForm {
             logArea.append("Config done!" + newLine);
 
             try {
-                String path = "output";
-                File HMIInitMacro = HMIInit.generateMacro(configMain, configSignals, path);
-                saveFile(HMIInitMacro);
+                File HMIInitMacro = HMIInit.generateMacro(configMain, configSignals);
+                // saveFile(HMIInitMacro);
 
-                File mainDigitalMacro = StptDigitalInit.generateStptMainDigitalMacro(configMain, configSignals, path, mainForm);
-                saveFile(mainDigitalMacro);
+                File mainDigitalMacro = StptDigitalInit.generateStptMainDigitalMacro(configMain, configSignals, mainForm);
+                // saveFile(mainDigitalMacro);
 
-                File advancedDigitalMacro = StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configSignals, path, mainForm);
-                saveFile(advancedDigitalMacro);
+                File advancedDigitalMacro = StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configSignals, mainForm);
+                // saveFile(advancedDigitalMacro);
 
-                File advancedInputsMacro = StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configSignals, path, mainForm);
-                saveFile(advancedInputsMacro);
+                File advancedInputsMacro = StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configSignals, mainForm);
+                // saveFile(advancedInputsMacro);
 
-                File advancedFanMacro = StptDigitalInit.generateStptAdvancedFanMacro(configMain, configSignals, path, mainForm);
-                saveFile(advancedFanMacro);
+                File advancedFanMacro = StptDigitalInit.generateStptAdvancedFanMacro(configMain, configSignals, mainForm);
+                // saveFile(advancedFanMacro);
 
-                File advancedTempMacro = StptDigitalInit.generateStptAdvancedTempMacro(configMain, configSignals, path, mainForm);
-                saveFile(advancedTempMacro);
+                File advancedTempMacro = StptDigitalInit.generateStptAdvancedTempMacro(configMain, configSignals, mainForm);
+                // saveFile(advancedTempMacro);
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
             } catch (IOException e) {
