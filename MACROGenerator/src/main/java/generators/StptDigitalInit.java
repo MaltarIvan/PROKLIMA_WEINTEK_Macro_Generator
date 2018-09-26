@@ -1,5 +1,6 @@
 package generators;
 
+import GUI.MainForm;
 import entities.Signal;
 import exceptions.ConfigurationNotDoneException;
 import utilities.ConfigMain;
@@ -39,57 +40,70 @@ public final class StptDigitalInit {
 
     private StptDigitalInit() {}
 
-    public static void generateStptMainDigitalMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptMainDigitalMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_MAIN_DIGITAL_NAME;
 
         if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
             throw new ConfigurationNotDoneException();
         }
 
-        generateMacro(configMain, configSignals.getMainDigital(), path);
+        File file = generateMacro(configMain, configSignals.getMainDigital(), path, mainForm);
         System.out.println("StptMainDigital_init macro done!");
+
+        return file;
     }
 
-    public static void generateStptAdvancedDigitalMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedDigitalMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_DIGITAL_NAME;
 
         if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
             throw new ConfigurationNotDoneException();
         }
 
-        generateMacro(configMain, configSignals.getAdvancedDigital(), path);
+        File file = generateMacro(configMain, configSignals.getAdvancedDigital(), path, mainForm);
         System.out.println("StptAdvancedDigital_init macro done!");
+
+        return file;
     }
 
-    public static void generateStptAdvancedInputsMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedInputsMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_INPUTS_NAME;
-        generateMacro(configMain, configSignals.getAdvancedInputs(), path);
+
+        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+            throw new ConfigurationNotDoneException();
+        }
+
+        File file = generateMacro(configMain, configSignals.getAdvancedInputs(), path, mainForm);
         System.out.println("StptAdvancedInputs_init macro done!");
+
+        return file;
     }
 
-    public static void generateStptAdvancedFanMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedFanMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_FAN_NAME;
 
         if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
             throw new ConfigurationNotDoneException();
         }
 
-        generateMacro(configMain, configSignals.getAdvancedFan(), path);
+        File file = generateMacro(configMain, configSignals.getAdvancedFan(), path, mainForm);
         System.out.println("StptAdvancedFan_init macro done!");
+        return file;
     }
 
-    public static void generateStptAdvancedTempMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedTempMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_TEMP_NAME;
 
         if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
             throw new ConfigurationNotDoneException();
         }
 
-        generateMacro(configMain, configSignals.getAdvancedTemp(), path);
+        File file = generateMacro(configMain, configSignals.getAdvancedTemp(), path, mainForm);
         System.out.println("StptAdvancedTemp_init macro done!");
+        return file;
     }
 
-    private static void generateMacro(ConfigMain configMain, ArrayList<Signal> signals, String path) throws ConfigurationNotDoneException, IOException {
+    private static File generateMacro(ConfigMain configMain, ArrayList<Signal> signals, String path, MainForm mainForm) throws ConfigurationNotDoneException, IOException {
         File file = new File(path);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
@@ -352,5 +366,7 @@ public final class StptDigitalInit {
         bufferedWriter.write(END_MACRO_COMMAND);
 
         bufferedWriter.close();
+
+        return file;
     }
 }

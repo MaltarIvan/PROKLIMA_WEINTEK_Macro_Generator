@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="api">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../antform-bin-2.0.zip!/antform-bin-2.0/doc/api" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

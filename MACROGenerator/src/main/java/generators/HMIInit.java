@@ -23,7 +23,7 @@ public final class HMIInit {
 
     private HMIInit() {}
 
-    public static void generateMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws ConfigurationNotDoneException, IOException {
+    public static File generateMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws ConfigurationNotDoneException, IOException {
         ArrayList<Signal> signals = new ArrayList<>();
         File file = new File(path + "\\" + MACRO_NAME);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -110,5 +110,7 @@ public final class HMIInit {
 
         bufferedWriter.close();
         System.out.println("HMI_init macro done!");
+
+        return file;
     }
 }
