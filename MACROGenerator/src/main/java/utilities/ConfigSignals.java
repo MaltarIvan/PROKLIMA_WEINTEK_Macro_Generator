@@ -34,6 +34,7 @@ public class ConfigSignals {
     private ArrayList<Signal> advancedInputs;
     private ArrayList<Signal> advancedFan;
     private ArrayList<Signal> advancedTemp;
+    private int version;
 
     private boolean configurated;
 
@@ -59,7 +60,19 @@ public class ConfigSignals {
 
         for (Row row : sheet) {
             Cell cell;
-            if (row.getRowNum() > 0) {
+            if (row.getRowNum() == 0) {
+                if (row.getCell(0).getCellType() == CellType.STRING) {
+                    String[] strs = row.getCell(0).getStringCellValue().split(":");
+                    if (strs.length < 2) {
+                        throw new WrongFormatException();
+                    } else {
+                        version = Integer.parseInt(strs[1].trim());
+                    }
+                } else {
+                    throw new WrongFormatException();
+                }
+            }
+            if (row.getRowNum() > 1) {
                 if (row.getCell(0) != null) {
                     if (row.getCell(0).getCellType() == CellType.STRING) {
                         String content = row.getCell(0).getStringCellValue();
@@ -323,5 +336,13 @@ public class ConfigSignals {
 
     public void setConfigurated(boolean configurated) {
         this.configurated = configurated;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

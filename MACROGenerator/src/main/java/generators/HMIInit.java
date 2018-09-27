@@ -1,5 +1,6 @@
 package generators;
 
+import GUI.MainForm;
 import entities.Signal;
 import entities.States;
 import exceptions.ConfigurationNotDoneException;
@@ -13,6 +14,7 @@ import java.util.Comparator;
 
 public final class HMIInit {
     private static final String MACRO_NAME = "HMI_init.txt";
+    private static final String VERSION_TAG = "// Version: ";
     private static final String OPEN_MACRO_COMMAND = "macro_command main()";
     private static final String END_MACRO_COMMAND = "end macro_command";
     private static final String DIGITAL_STATES_STRINGS_START_DEC = "short DIGITAL_STATES_STRINGS_START = ";
@@ -23,7 +25,7 @@ public final class HMIInit {
 
     private HMIInit() {}
 
-    public static File generateMacro(ConfigMain configMain, ConfigSignals configSignals, String path) throws ConfigurationNotDoneException, IOException {
+    public static File generateMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws ConfigurationNotDoneException, IOException {
         path += "\\" + MACRO_NAME;
         ArrayList<Signal> signals = new ArrayList<>();
         File file = new File(path);
@@ -55,6 +57,7 @@ public final class HMIInit {
             }
         }
 
+        bufferedWriter.write(VERSION_TAG + configSignals.getVersion());
         bufferedWriter.newLine();
         bufferedWriter.write(OPEN_MACRO_COMMAND);
         bufferedWriter.newLine();
@@ -110,7 +113,7 @@ public final class HMIInit {
         bufferedWriter.write(END_MACRO_COMMAND);
 
         bufferedWriter.close();
-        System.out.println("HMI_init macro done!");
+        mainForm.getLogArea().append("HMI_init macro done!\n");
 
         return file;
     }

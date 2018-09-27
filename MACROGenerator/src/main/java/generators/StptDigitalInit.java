@@ -16,6 +16,7 @@ public final class StptDigitalInit {
     private static final String STPT_ADVANCED_FAN_NAME = "StptAdvancedFan_init.txt";
     private static final String STPT_ADVANCED_TEMP_NAME = "StptAdvancedTemp_init.txt";
 
+    private static final String VERSION_TAG = "// Version: ";
     private static final String OPEN_MACRO_COMMAND = "macro_command main()";
     private static final String END_MACRO_COMMAND = "end macro_command";
     private static final String DISP_STR_ID_START_DEC = "short DISP_STR_ID_START = ";
@@ -46,7 +47,7 @@ public final class StptDigitalInit {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getMainDigital(), path);
+        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getMainDigital(), path);
         mainForm.getLogArea().append("StptMainDigital_init macro done!" + "\n");
 
         return file;
@@ -59,7 +60,7 @@ public final class StptDigitalInit {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getAdvancedDigital(), path);
+        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedDigital(), path);
         mainForm.getLogArea().append("StptAdvancedDigital_init macro done!" + "\n");
 
         return file;
@@ -72,7 +73,7 @@ public final class StptDigitalInit {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getAdvancedInputs(), path);
+        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedInputs(), path);
         mainForm.getLogArea().append("StptAdvancedInputs_init macro done!" + "\n");
 
         return file;
@@ -85,7 +86,7 @@ public final class StptDigitalInit {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getAdvancedFan(), path);
+        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedFan(), path);
         mainForm.getLogArea().append("StptAdvancedFan_init macro done!" + "\n");
         return file;
     }
@@ -97,18 +98,19 @@ public final class StptDigitalInit {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getAdvancedTemp(), path);
+        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedTemp(), path);
         mainForm.getLogArea().append("StptAdvancedTemp_init macro done!" + "\n");
         return file;
     }
 
-    private static File generateMacro(ConfigMain configMain, ArrayList<Signal> signals, String path) throws IOException {
+    private static File generateMacro(ConfigMain configMain, int version, ArrayList<Signal> signals, String path) throws IOException {
         File file = new File(path);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
 
         String line;
 
+        bufferedWriter.write(VERSION_TAG + version);
         bufferedWriter.newLine();
         bufferedWriter.write(OPEN_MACRO_COMMAND);
         bufferedWriter.newLine();
