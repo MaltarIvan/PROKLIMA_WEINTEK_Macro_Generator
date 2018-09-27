@@ -4,7 +4,7 @@ import GUI.MainForm;
 import entities.Signal;
 import exceptions.ConfigurationNotDoneException;
 import utilities.ConfigMain;
-import utilities.ConfigSignals;
+import utilities.ConfigDigitalStpts;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -40,65 +40,65 @@ public final class StptDigitalInit {
 
     private StptDigitalInit() {}
 
-    public static File generateStptMainDigitalMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptMainDigitalMacro(ConfigMain configMain, ConfigDigitalStpts configDigitalStpts, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_MAIN_DIGITAL_NAME;
 
-        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+        if (!configMain.isConfigurated() || !configDigitalStpts.isConfigured()) {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getMainDigital(), path);
+        File file = generateMacro(configMain, configDigitalStpts.getVersion(), configDigitalStpts.getMainDigital(), path);
         mainForm.getLogArea().append("StptMainDigital_init macro done!" + "\n");
 
         return file;
     }
 
-    public static File generateStptAdvancedDigitalMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedDigitalMacro(ConfigMain configMain, ConfigDigitalStpts configDigitalStpts, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_DIGITAL_NAME;
 
-        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+        if (!configMain.isConfigurated() || !configDigitalStpts.isConfigured()) {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedDigital(), path);
+        File file = generateMacro(configMain, configDigitalStpts.getVersion(), configDigitalStpts.getAdvancedDigital(), path);
         mainForm.getLogArea().append("StptAdvancedDigital_init macro done!" + "\n");
 
         return file;
     }
 
-    public static File generateStptAdvancedInputsMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedInputsMacro(ConfigMain configMain, ConfigDigitalStpts configDigitalStpts, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_INPUTS_NAME;
 
-        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+        if (!configMain.isConfigurated() || !configDigitalStpts.isConfigured()) {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedInputs(), path);
+        File file = generateMacro(configMain, configDigitalStpts.getVersion(), configDigitalStpts.getAdvancedInputs(), path);
         mainForm.getLogArea().append("StptAdvancedInputs_init macro done!" + "\n");
 
         return file;
     }
 
-    public static File generateStptAdvancedFanMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedFanMacro(ConfigMain configMain, ConfigDigitalStpts configDigitalStpts, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_FAN_NAME;
 
-        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+        if (!configMain.isConfigurated() || !configDigitalStpts.isConfigured()) {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedFan(), path);
+        File file = generateMacro(configMain, configDigitalStpts.getVersion(), configDigitalStpts.getAdvancedFan(), path);
         mainForm.getLogArea().append("StptAdvancedFan_init macro done!" + "\n");
         return file;
     }
 
-    public static File generateStptAdvancedTempMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
+    public static File generateStptAdvancedTempMacro(ConfigMain configMain, ConfigDigitalStpts configDigitalStpts, String path, MainForm mainForm) throws IOException, ConfigurationNotDoneException {
         path += "\\" + STPT_ADVANCED_TEMP_NAME;
 
-        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+        if (!configMain.isConfigurated() || !configDigitalStpts.isConfigured()) {
             throw new ConfigurationNotDoneException();
         }
 
-        File file = generateMacro(configMain, configSignals.getVersion(), configSignals.getAdvancedTemp(), path);
+        File file = generateMacro(configMain, configDigitalStpts.getVersion(), configDigitalStpts.getAdvancedTemp(), path);
         mainForm.getLogArea().append("StptAdvancedTemp_init macro done!" + "\n");
         return file;
     }

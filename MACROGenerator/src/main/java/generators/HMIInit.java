@@ -5,7 +5,7 @@ import entities.Signal;
 import entities.States;
 import exceptions.ConfigurationNotDoneException;
 import utilities.ConfigMain;
-import utilities.ConfigSignals;
+import utilities.ConfigDigitalStpts;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -25,22 +25,22 @@ public final class HMIInit {
 
     private HMIInit() {}
 
-    public static File generateMacro(ConfigMain configMain, ConfigSignals configSignals, String path, MainForm mainForm) throws ConfigurationNotDoneException, IOException {
+    public static File generateMacro(ConfigMain configMain, ConfigDigitalStpts configDigitalStpts, String path, MainForm mainForm) throws ConfigurationNotDoneException, IOException {
         path += "\\" + MACRO_NAME;
         ArrayList<Signal> signals = new ArrayList<>();
         File file = new File(path);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
 
-        if (!configMain.isConfigurated() || !configSignals.isConfigurated()) {
+        if (!configMain.isConfigurated() || !configDigitalStpts.isConfigured()) {
             throw new ConfigurationNotDoneException();
         }
 
-        signals.addAll(configSignals.getMainDigital());
-        signals.addAll(configSignals.getAdvancedDigital());
-        signals.addAll(configSignals.getAdvancedInputs());
-        signals.addAll(configSignals.getAdvancedFan());
-        signals.addAll(configSignals.getAdvancedTemp());
+        signals.addAll(configDigitalStpts.getMainDigital());
+        signals.addAll(configDigitalStpts.getAdvancedDigital());
+        signals.addAll(configDigitalStpts.getAdvancedInputs());
+        signals.addAll(configDigitalStpts.getAdvancedFan());
+        signals.addAll(configDigitalStpts.getAdvancedTemp());
 
         Collections.sort(signals, new Comparator<Signal>() {
 
@@ -57,7 +57,7 @@ public final class HMIInit {
             }
         }
 
-        bufferedWriter.write(VERSION_TAG + configSignals.getVersion());
+        bufferedWriter.write(VERSION_TAG + configDigitalStpts.getVersion());
         bufferedWriter.newLine();
         bufferedWriter.write(OPEN_MACRO_COMMAND);
         bufferedWriter.newLine();

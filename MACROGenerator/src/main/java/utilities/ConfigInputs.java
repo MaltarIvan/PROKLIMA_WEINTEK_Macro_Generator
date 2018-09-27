@@ -5,40 +5,35 @@ import entities.States;
 import exceptions.WrongFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import utilities.groups.FireDamprs;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-public class ConfigSignals {
-    private static final String MAIN_DIGITAL_KEY = "#GROUP# MAIN DIGITAL";
-    private static final String ADVANCED_DIGITAL_KEY = "#GROUP# ADVANCED DIGITAL";
-    private static final String ADVANCED_INPUTS_KEY = "#GROUP# ADVANCED INPUTS";
-    private static final String ADVANCED_FAN_KEY = "#GROUP# ADVANCED FAN";
-    private static final String ADVANCED_TEMP_KEY = "#GROUP# ADVANCED TEMP";
+public class ConfigInputs {
+    private static final String DIGITAL_KEY = "#GROUP# DIGITAL";
+    private static final String ANALOG_KEY = "#GROUP# ANALOG";
+    private static final String FIRE_DAMPERS_KEY = "#GROUP# FIRE DAMPERS";
+    private static final String ROOM_PRESSURES_KEY = "#GROUP# ROOM PRESSURES";
+    private static final String VAV_SWITCHES_KEY = "#GROUP# VAV SWITCHES";
 
-    private static final int MAIN_DIGITAL_VALUE = 0;
-    private static final int ADVANCED_DIGITAL_VALUE = 1;
-    private static final int ADVANCED_INPUTS_VALUE = 2;
-    private static final int ADVANCED_FAN_VALUE = 3;
-    private static final int ADVANCED_TEMP_VALUE = 4;
+    private static final int DIGITAL_VALUE = 0;
+    private static final int ANALOG_VALUE = 1;
 
     private String path;
 
-    private ArrayList<Signal> mainDigital;
-    private ArrayList<Signal> advancedDigital;
-    private ArrayList<Signal> advancedInputs;
-    private ArrayList<Signal> advancedFan;
-    private ArrayList<Signal> advancedTemp;
+    private ArrayList<Signal> digital;
+    private ArrayList<Signal> analog;
+    private ArrayList<Signal> fireDampers;
+    private ArrayList<Signal> roomPressures;
+    private ArrayList<Signal> VAVSwitches;
     private int version;
 
-    private boolean configurated;
+    private boolean configured;
 
-    public ConfigSignals(String path) {
+    public ConfigInputs(String path) {
         this.path = path;
     }
 
@@ -46,11 +41,11 @@ public class ConfigSignals {
         ArrayList<States> pastStates = new ArrayList<>();
         int nextStatesStringIndex = 0;
 
-        mainDigital = new ArrayList<>();
-        advancedDigital = new ArrayList<>();
-        advancedInputs = new ArrayList<>();
-        advancedFan = new ArrayList<>();
-        advancedTemp = new ArrayList<>();
+        digital = new ArrayList<>();
+        analog = new ArrayList<>();
+        fireDampers = new ArrayList<>();
+        roomPressures = new ArrayList<>();
+        VAVSwitches = new ArrayList<>();
 
         FileInputStream excelFile = new FileInputStream(new File(path));
         Workbook workbook = new XSSFWorkbook(excelFile);
@@ -72,7 +67,8 @@ public class ConfigSignals {
                     throw new WrongFormatException();
                 }
             }
-            if (row.getRowNum() > 1) {
+            // TODO: 27.9.2018. učitati podatke za grupe inputa (dampr, room, vav)
+            if (row.getRowNum() > 24) {
                 if (row.getCell(0) != null) {
                     if (row.getCell(0).getCellType() == CellType.STRING) {
                         String content = row.getCell(0).getStringCellValue();
@@ -81,20 +77,11 @@ public class ConfigSignals {
                             content = strs[1];
                             if (content.equals("GROUP")) {
                                 switch (row.getCell(0).getStringCellValue()) {
-                                    case MAIN_DIGITAL_KEY:
-                                        currentSignalGroup = MAIN_DIGITAL_VALUE;
+                                    case DIGITAL_KEY:
+                                        currentSignalGroup = DIGITAL_VALUE;
                                         break;
-                                    case ADVANCED_DIGITAL_KEY:
-                                        currentSignalGroup = ADVANCED_DIGITAL_VALUE;
-                                        break;
-                                    case ADVANCED_INPUTS_KEY:
-                                        currentSignalGroup = ADVANCED_INPUTS_VALUE;
-                                        break;
-                                    case ADVANCED_FAN_KEY:
-                                        currentSignalGroup = ADVANCED_FAN_VALUE;
-                                        break;
-                                    case ADVANCED_TEMP_KEY:
-                                        currentSignalGroup = ADVANCED_TEMP_VALUE;
+                                    case ANALOG_KEY:
+                                        currentSignalGroup = ANALOG_VALUE;
                                         break;
                                     default:
                                         throw new WrongFormatException();
@@ -105,7 +92,8 @@ public class ConfigSignals {
                         throw new WrongFormatException();
                     }
                 }
-                if (row.getLastCellNum() == 20) {
+                int last = row.getLastCellNum();
+                if (last >= 21) {
                     Signal signal = new Signal();
                     cell = row.getCell(1);
                     if (cell.getCellType() == CellType.STRING) {
@@ -124,7 +112,6 @@ public class ConfigSignals {
                         default:
                             throw new WrongFormatException();
                     }
-
                     cell = row.getCell(5);
                     boolean TPConfigDW = true;
                     if (cell == null) {
@@ -174,7 +161,6 @@ public class ConfigSignals {
                             default:
                                 throw new WrongFormatException();
                         }
-
                         cell = row.getCell(4);
                         switch (cell.getCellType()) {
                             case STRING:
@@ -188,7 +174,6 @@ public class ConfigSignals {
                             default:
                                 throw new WrongFormatException();
                         }
-
                         cell = row.getCell(6);
                         if (cell != null) {
                             switch (cell.getCellType()) {
@@ -225,53 +210,62 @@ public class ConfigSignals {
                     }
 
                     cell = row.getCell(10);
-                    if (cell.getCellType() == CellType.BOOLEAN) {
-                        if (cell.getBooleanCellValue()) {
-                            signal.setDisabled(true);
-                        } else {
-                            signal.setDisabled(false);
-                        }
-                    } else {
-                        throw new WrongFormatException();
-                    }
-
-                    ArrayList<String[]> statesStr = new ArrayList<>();
-                    for (int i = 11; i <= 19; i++) {
-                        cell = row.getCell(i);
-                        if (cell.getCellType() == CellType.STRING) {
-                            statesStr.add(cell.getStringCellValue().split("\\*"));
-                        } else {
+                    switch (cell.getCellType()) {
+                        case STRING:
+                            if (!cell.getStringCellValue().equals("x")) {
+                                signal.setScale(Double.parseDouble(cell.getStringCellValue()));
+                            }
+                            break;
+                        case NUMERIC:
+                            signal.setScale(cell.getNumericCellValue());
+                            break;
+                        default:
                             throw new WrongFormatException();
-                        }
+                    }
+                    cell = row.getCell(11);
+                    switch (cell.getCellType()) {
+                        case STRING:
+                            if (!cell.getStringCellValue().equals("x")) {
+                                throw new WrongFormatException();
+                            }
+                            break;
+                        case NUMERIC:
+                            signal.setDataType((int) cell.getNumericCellValue());
+                            break;
+                        default:
+                            throw new WrongFormatException();
                     }
 
-                    States states = new States(statesStr, nextStatesStringIndex);
-                    if (pastStates.contains(states)) {
-                        States currentStates = pastStates.get(pastStates.indexOf(states));
-                        signal.setStates(currentStates);
-                        currentStates.getSignals().add(signal);
-                    } else {
-                        signal.setStates(states);
-                        states.getSignals().add(signal);
-                        nextStatesStringIndex += statesStr.get(0).length;
-                        pastStates.add(states);
+                    if (currentSignalGroup == DIGITAL_VALUE) {
+                        ArrayList<String[]> statesStr = new ArrayList<>();
+                        for (int i = 12; i <= 20; i++) {
+                            cell = row.getCell(i);
+                            if (cell.getCellType() == CellType.STRING) {
+                                statesStr.add(cell.getStringCellValue().split("\\*"));
+                            } else {
+                                throw new WrongFormatException();
+                            }
+                        }
+
+                        States states = new States(statesStr, nextStatesStringIndex);
+                        if (pastStates.contains(states)) {
+                            States currentStates = pastStates.get(pastStates.indexOf(states));
+                            signal.setStates(currentStates);
+                            currentStates.getSignals().add(signal);
+                        } else {
+                            signal.setStates(states);
+                            states.getSignals().add(signal);
+                            nextStatesStringIndex += statesStr.get(0).length;
+                            pastStates.add(states);
+                        }
                     }
 
                     switch (currentSignalGroup) {
-                        case MAIN_DIGITAL_VALUE:
-                            mainDigital.add(signal);
+                        case DIGITAL_VALUE:
+                            digital.add(signal);
                             break;
-                        case ADVANCED_DIGITAL_VALUE:
-                            advancedDigital.add(signal);
-                            break;
-                        case ADVANCED_INPUTS_VALUE:
-                            advancedInputs.add(signal);
-                            break;
-                        case ADVANCED_FAN_VALUE:
-                            advancedFan.add(signal);
-                            break;
-                        case ADVANCED_TEMP_VALUE:
-                            advancedTemp.add(signal);
+                        case ANALOG_VALUE:
+                            analog.add(signal);
                             break;
                         default:
                             throw new IllegalStateException();
@@ -279,7 +273,6 @@ public class ConfigSignals {
                 }
             }
         }
-        configurated = true;
     }
 
     public String getPath() {
@@ -290,52 +283,44 @@ public class ConfigSignals {
         this.path = path;
     }
 
-    public ArrayList<Signal> getMainDigital() {
-        return mainDigital;
+    public ArrayList<Signal> getDegital() {
+        return digital;
     }
 
-    public void setMainDigital(ArrayList<Signal> mainDigital) {
-        this.mainDigital = mainDigital;
+    public void setDegital(ArrayList<Signal> degital) {
+        this.digital = degital;
     }
 
-    public ArrayList<Signal> getAdvancedDigital() {
-        return advancedDigital;
+    public ArrayList<Signal> getAnalog() {
+        return analog;
     }
 
-    public void setAdvancedDigital(ArrayList<Signal> advancedDigital) {
-        this.advancedDigital = advancedDigital;
+    public void setAnalog(ArrayList<Signal> analog) {
+        this.analog = analog;
     }
 
-    public ArrayList<Signal> getAdvancedInputs() {
-        return advancedInputs;
+    public ArrayList<Signal> getFireDampers() {
+        return fireDampers;
     }
 
-    public void setAdvancedInputs(ArrayList<Signal> advancedInputs) {
-        this.advancedInputs = advancedInputs;
+    public void setFireDampers(ArrayList<Signal> fireDampers) {
+        this.fireDampers = fireDampers;
     }
 
-    public ArrayList<Signal> getAdvancedFan() {
-        return advancedFan;
+    public ArrayList<Signal> getRoomPressures() {
+        return roomPressures;
     }
 
-    public void setAdvancedFan(ArrayList<Signal> advancedFan) {
-        this.advancedFan = advancedFan;
+    public void setRoomPressuers(ArrayList<Signal> roomPressures) {
+        this.roomPressures = roomPressures;
     }
 
-    public ArrayList<Signal> getAdvancedTemp() {
-        return advancedTemp;
+    public ArrayList<Signal> getVAVSwitches() {
+        return VAVSwitches;
     }
 
-    public void setAdvancedTemp(ArrayList<Signal> advancedTemp) {
-        this.advancedTemp = advancedTemp;
-    }
-
-    public boolean isConfigurated() {
-        return configurated;
-    }
-
-    public void setConfigurated(boolean configurated) {
-        this.configurated = configurated;
+    public void setVAVSwitches(ArrayList<Signal> VAVSwitches) {
+        this.VAVSwitches = VAVSwitches;
     }
 
     public int getVersion() {
@@ -344,5 +329,13 @@ public class ConfigSignals {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public boolean isConfigured() {
+        return configured;
+    }
+
+    public void setConfigured(boolean configured) {
+        this.configured = configured;
     }
 }

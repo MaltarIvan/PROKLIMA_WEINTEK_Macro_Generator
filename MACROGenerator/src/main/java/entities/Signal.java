@@ -13,6 +13,8 @@ public class Signal {
     private int signalAddr;
     private boolean TPConfigDW;
     private boolean disabled;
+    private double scale;
+    private int dataType;
 
     public Signal() {
     }
@@ -113,6 +115,22 @@ public class Signal {
         this.disabled = disabled;
     }
 
+    public double getScale() {
+        return scale;
+    }
+
+    public void setScale(double scale) {
+        this.scale = scale;
+    }
+
+    public int getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(int dataType) {
+        this.dataType = dataType;
+    }
+
     @Override
     public String toString() {
         return "Signal{" +
@@ -128,6 +146,8 @@ public class Signal {
                 ", signalAddr=" + signalAddr +
                 ", TPConfigDW=" + TPConfigDW +
                 ", disabled=" + disabled +
+                ", scale=" + scale +
+                ", dataType=" + dataType +
                 '}';
     }
 }

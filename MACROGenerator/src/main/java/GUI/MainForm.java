@@ -4,17 +4,16 @@ import exceptions.ConfigurationNotDoneException;
 import exceptions.WrongFormatException;
 import generators.HMIInit;
 import generators.StptDigitalInit;
+import utilities.ConfigInputs;
 import utilities.ConfigMain;
-import utilities.ConfigSignals;
+import utilities.ConfigDigitalStpts;
+import utilities.groups.FireDamprs;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.nio.channels.FileChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class MainForm {
     static private final String newLine = "\n";
@@ -26,6 +25,8 @@ public class MainForm {
     private JButton generateButton;
     private JButton getMainConfig;
     private JTextArea logArea;
+    private JTextField inputsPath;
+    private JButton getInputsFileButton;
 
     private JFileChooser fileChooser;
 
@@ -35,6 +36,7 @@ public class MainForm {
         generateButton.addActionListener(new GenerateBtnClicked(this));
         getMainConfig.addActionListener(new GetMainConfigBtnClicked());
         getDigitalStpt.addActionListener(new GetDigitalStptBtnClicked());
+        getInputsFileButton.addActionListener(new GetInputsBtnClicked());
     }
 
     public JTextField getMainConfigPath() {
@@ -103,7 +105,10 @@ public class MainForm {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             logArea.append("Config start..." + newLine);
+            
             ConfigMain configMain = new ConfigMain(mainConfigPath.getText());
+            ConfigDigitalStpts configDigitalStpts = new ConfigDigitalStpts(digitalStptPath.getText());
+            ConfigInputs configInputs = new ConfigInputs(inputsPath.getText());
             try {
                 configMain.getConfiguration();
             } catch (IOException e) {
@@ -114,13 +119,20 @@ public class MainForm {
                 logArea.append(e.getMessage());
             }
 
-            ConfigSignals configSignals = new ConfigSignals(digitalStptPath.getText());
             try {
-                configSignals.getConfiguration();
+                configDigitalStpts.getConfiguration();
             } catch (IOException | WrongFormatException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
+
+            try {
+                configInputs.getConfiguration();
+            } catch (IOException | WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+            
             logArea.append("Config done!" + newLine);
 
             try {
@@ -132,12 +144,12 @@ public class MainForm {
                 fileChooser.setDialogTitle("Choose macros location");
                 if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
                     path = fileChooser.getSelectedFile().getAbsolutePath();
-                    HMIInit.generateMacro(configMain, configSignals, path, mainForm);
-                    StptDigitalInit.generateStptMainDigitalMacro(configMain, configSignals, path, mainForm);
-                    StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configSignals, path, mainForm);
-                    StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configSignals, path, mainForm);
-                    StptDigitalInit.generateStptAdvancedFanMacro(configMain, configSignals, path, mainForm);
-                    StptDigitalInit.generateStptAdvancedTempMacro(configMain, configSignals, path, mainForm);
+                    HMIInit.generateMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptMainDigitalMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedFanMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedTempMacro(configMain, configDigitalStpts, path, mainForm);
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
@@ -204,6 +216,18 @@ public class MainForm {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String path = fileChooser.getSelectedFile().getAbsolutePath();
                 digitalStptPath.setText(path);
+            }
+        }
+    }
+    
+    private class GetInputsBtnClicked implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int returnVal = fileChooser.showOpenDialog(mainView);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                String path = fileChooser.getSelectedFile().getAbsolutePath();
+                inputsPath.setText(path);
             }
         }
     }
