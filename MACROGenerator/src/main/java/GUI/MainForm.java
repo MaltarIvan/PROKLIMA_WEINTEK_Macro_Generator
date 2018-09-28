@@ -3,11 +3,11 @@ package GUI;
 import exceptions.ConfigurationNotDoneException;
 import exceptions.WrongFormatException;
 import generators.HMIInit;
+import generators.ReadInputs;
 import generators.StptDigitalInit;
 import utilities.ConfigInputs;
 import utilities.ConfigMain;
 import utilities.ConfigDigitalStpts;
-import utilities.groups.FireDamprs;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -116,7 +116,7 @@ public class MainForm {
                 logArea.append(e.getMessage() + newLine);
             } catch (WrongFormatException e) {
                 e.printStackTrace();
-                logArea.append(e.getMessage());
+                logArea.append(e.getMessage() + newLine);
             }
 
             try {
@@ -150,48 +150,13 @@ public class MainForm {
                     StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configDigitalStpts, path, mainForm);
                     StptDigitalInit.generateStptAdvancedFanMacro(configMain, configDigitalStpts, path, mainForm);
                     StptDigitalInit.generateStptAdvancedTempMacro(configMain, configDigitalStpts, path, mainForm);
+                    ReadInputs.generateReadInputsMacro(configMain, configInputs, path, mainForm);
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
-            }
-        }
-
-        private void saveFile(File file) {
-            fileChooser.setSelectedFile(file);
-            int returnVal = fileChooser.showSaveDialog(mainView);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                logArea.append("Saving: " + file.getName() + " to " + file.getAbsolutePath() + "." + newLine);
-                File outputFile = fileChooser.getSelectedFile();
-                FileChannel source = null;
-                FileChannel destination = null;
-                try {
-                    FileWriter fileWriter = new FileWriter(outputFile);
-                    source = new FileInputStream(file).getChannel();
-                    destination = new FileOutputStream(outputFile).getChannel();
-                    destination.transferFrom(source, 0, source.size());
-                    fileWriter.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    logArea.append(e.getMessage() + newLine);
-                } finally {
-                    if (source != null) {
-                        try {
-                            source.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (destination != null) {
-                        try {
-                            destination.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
             }
         }
     }

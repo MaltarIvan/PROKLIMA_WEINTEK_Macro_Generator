@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class ConfigMain {
     private int dispStrIdStart;
+    private int dispDataStart;
     private int maxDataPerScreen;
     private int stringIdStart;
     private int regStart;
@@ -15,6 +16,7 @@ public class ConfigMain {
     private int stateIndexStart;
     private int stateCountStart;
     private int disabledStart;
+    private int lineHiddenStart;
     private int inputDisabledStart;
     private int stateMonitorStart;
     private int stateUpdateStart;
@@ -48,6 +50,8 @@ public class ConfigMain {
         String[] splitted;
 
         while (line != null) {
+            if (line.equals("")) line = bufferedReader.readLine();
+
             splitted = line.split("=");
             param = splitted[0].trim();
             value = splitted[1].trim();
@@ -128,8 +132,14 @@ public class ConfigMain {
                 case "LANGUAGE_COUNT":
                     languageCount = Integer.parseInt(value);
                     break;
+                case "LINE_HIDDEN_START":
+                    lineHiddenStart = Integer.parseInt(value);
+                    break;
+                case "DISP_DATA_START":
+                    dispDataStart = Integer.parseInt(value);
+                    break;
                 default:
-                    throw new WrongFormatException();
+                    throw new WrongFormatException("Wrong parameter name: " + "\"" + param + "\"" + " in " + mainConfigPath);
             }
 
             line = bufferedReader.readLine();
@@ -137,42 +147,6 @@ public class ConfigMain {
         bufferedReader.close();
 
         configurated = true;
-    }
-
-    public void print() {
-        System.out.println(dispStrIdStart);
-        System.out.println(maxDataPerScreen);
-        System.out.println(stringIdStart);
-        System.out.println(regStart);
-        System.out.println(addrStart);
-        System.out.println(stateIndexStart);
-        System.out.println(stateCountStart);
-        System.out.println(disabledStart);
-        System.out.println(inputDisabledStart);
-        System.out.println(stateMonitorStart);
-        System.out.println(stateUpdateStart);
-        System.out.println(stateStringStart);
-        System.out.println(digitalStateStringStart);
-        System.out.println(TPConfigDW0Reg);
-        System.out.println(TPConfigDW0Addr);
-        System.out.println(TPConfigDW1Reg);
-        System.out.println(TPConfigDW1Addr);
-        System.out.println(TPConfigDW2Reg);
-        System.out.println(TPConfigDW2Addr);
-        System.out.println(TPConfigDW3Reg);
-        System.out.println(TPConfigDW3Addr);
-        System.out.println(TPConfigDW4Reg);
-        System.out.println(TPConfigDW4Addr);
-        System.out.println(StptDigitalReadMacroId);
-        System.out.println(languageCount);
-    }
-
-    public int getStringIdStart() {
-        return stringIdStart;
-    }
-
-    public void setStringIdStart(int stringIdStart) {
-        this.stringIdStart = stringIdStart;
     }
 
     public int getDispStrIdStart() {
@@ -183,12 +157,28 @@ public class ConfigMain {
         this.dispStrIdStart = dispStrIdStart;
     }
 
+    public int getDispDataStart() {
+        return dispDataStart;
+    }
+
+    public void setDispDataStart(int dispDataStart) {
+        this.dispDataStart = dispDataStart;
+    }
+
     public int getMaxDataPerScreen() {
         return maxDataPerScreen;
     }
 
     public void setMaxDataPerScreen(int maxDataPerScreen) {
         this.maxDataPerScreen = maxDataPerScreen;
+    }
+
+    public int getStringIdStart() {
+        return stringIdStart;
+    }
+
+    public void setStringIdStart(int stringIdStart) {
+        this.stringIdStart = stringIdStart;
     }
 
     public int getRegStart() {
@@ -229,6 +219,14 @@ public class ConfigMain {
 
     public void setDisabledStart(int disabledStart) {
         this.disabledStart = disabledStart;
+    }
+
+    public int getLineHiddenStart() {
+        return lineHiddenStart;
+    }
+
+    public void setLineHiddenStart(int lineHiddenStart) {
+        this.lineHiddenStart = lineHiddenStart;
     }
 
     public int getInputDisabledStart() {
