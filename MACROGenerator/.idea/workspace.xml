@@ -48,7 +48,7 @@
               <entry file="file://$PROJECT_DIR$/src/main/java/entities/sets/RoomPressures.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="408">
-                    <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+                    <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
                   </state>
                 </provider>
               </entry>
@@ -57,7 +57,7 @@
               <entry file="file://$PROJECT_DIR$/src/main/java/entities/sets/VAVSwitches.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="769">
-                    <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+                    <caret line="83" selection-start-line="83" selection-end-line="83" />
                   </state>
                 </provider>
               </entry>
@@ -84,10 +84,12 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+            <state relative-caret-position="340">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#190#191#0" expanded="true" />
+                <element signature="e#215#216#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,7 +98,7 @@
       <file leaf-file-name="ConfigInputs.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigInputs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
+            <state relative-caret-position="4386">
               <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -159,26 +161,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainForm.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainForm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="118" column="55" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
+            <state relative-caret-position="417">
+              <caret line="184" column="72" selection-start-line="184" selection-start-column="72" selection-end-line="184" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#GetMainConfigBtnClicked#0;class#MainForm#0" />
-                <element signature="class#GetDigitalStptBtnClicked#0;class#MainForm#0" />
-                <element signature="class#GetInputsBtnClicked#0;class#MainForm#0" />
+                <element signature="class#GenerateBtnClicked#0;class#MainForm#0" />
+                <element signature="e#2671#2672#0" expanded="true" />
+                <element signature="e#2719#2720#0" expanded="true" />
+                <element signature="method#actionPerformed#0;class#GenerateBtnClicked#0;class#MainForm#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadInputs.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReadInputs.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/generators/ReadInputs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="532" column="80" selection-start-line="532" selection-start-column="80" selection-end-line="532" selection-end-column="80" />
+            <state relative-caret-position="308">
+              <caret line="533" column="48" lean-forward="true" selection-start-line="533" selection-start-column="48" selection-end-line="533" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,8 +192,8 @@
       <file leaf-file-name="ConfigMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="58" column="28" lean-forward="true" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+            <state relative-caret-position="-5071">
+              <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1112#1113#0" expanded="true" />
@@ -353,10 +356,10 @@
         <option value="$PROJECT_DIR$/src/main/java/utilities/groups/VAVSwitches.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/sets/VAVSwitches.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigInputs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/StptDigitalInit.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/ReadInputs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.java" />
       </list>
     </option>
   </component>
@@ -452,15 +455,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MACROGenerator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MACROGenerator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="MainForm" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="MACROGenerator" type="b2602c69:ProjectViewProjectNode" />
@@ -636,15 +630,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigMain.java</url>
-          <line>141</line>
-          <properties />
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="192" />
+      <option name="time" value="193" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -663,6 +649,8 @@
           <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -704,6 +692,8 @@
           <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -738,6 +728,8 @@
           <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -772,6 +764,8 @@
           <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -840,6 +834,8 @@
           <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -915,14 +911,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/sets/RoomPressures.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/sets/VAVSwitches.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="769">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
         </state>
       </provider>
     </entry>
@@ -930,16 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3830">
           <caret line="251" column="56" selection-start-line="251" selection-start-column="56" selection-end-line="251" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,68 +959,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigInputs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#loadFireDamprs#0;class#ConfigInputs#0" />
-            <element signature="method#loadRoomPressures#0;class#ConfigInputs#0" />
-            <element signature="method#loadVAVSwitches#0;class#ConfigInputs#0" />
-            <element signature="e#22524#22525#0" expanded="true" />
-            <element signature="e#22551#22552#0" expanded="true" />
-            <element signature="e#22591#22592#0" expanded="true" />
-            <element signature="e#22623#22624#0" expanded="true" />
-            <element signature="e#22668#22669#0" expanded="true" />
-            <element signature="e#22698#22699#0" expanded="true" />
-            <element signature="e#22755#22756#0" expanded="true" />
-            <element signature="e#22793#22794#0" expanded="true" />
-            <element signature="e#22837#22838#0" expanded="true" />
-            <element signature="e#22866#22867#0" expanded="true" />
-            <element signature="e#22921#22922#0" expanded="true" />
-            <element signature="e#22957#22958#0" expanded="true" />
-            <element signature="e#22999#23000#0" expanded="true" />
-            <element signature="e#23033#23034#0" expanded="true" />
-            <element signature="e#23091#23092#0" expanded="true" />
-            <element signature="e#23137#23138#0" expanded="true" />
-            <element signature="e#23184#23185#0" expanded="true" />
-            <element signature="e#23220#23221#0" expanded="true" />
-            <element signature="e#23285#23286#0" expanded="true" />
-            <element signature="e#23335#23336#0" expanded="true" />
-            <element signature="e#23378#23379#0" expanded="true" />
-            <element signature="e#23412#23413#0" expanded="true" />
-            <element signature="e#23485#23486#0" expanded="true" />
-            <element signature="e#23531#23532#0" expanded="true" />
-            <element signature="e#23562#23563#0" expanded="true" />
-            <element signature="e#23592#23593#0" expanded="true" />
-            <element signature="e#23635#23636#0" expanded="true" />
-            <element signature="e#23673#23674#0" expanded="true" />
-            <element signature="e#23710#23711#0" expanded="true" />
-            <element signature="e#23743#23744#0" expanded="true" />
-            <element signature="e#23796#23797#0" expanded="true" />
-            <element signature="e#23840#23841#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="118" column="55" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#GetMainConfigBtnClicked#0;class#MainForm#0" />
-            <element signature="class#GetDigitalStptBtnClicked#0;class#MainForm#0" />
-            <element signature="class#GetInputsBtnClicked#0;class#MainForm#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="58" column="28" lean-forward="true" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+        <state relative-caret-position="-5071">
+          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1112#1113#0" expanded="true" />
@@ -1155,6 +1083,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/generators/ReadInputs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="533" column="48" lean-forward="true" selection-start-line="533" selection-start-column="48" selection-end-line="533" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigInputs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4386">
+          <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#loadFireDamprs#0;class#ConfigInputs#0" />
+            <element signature="method#loadRoomPressures#0;class#ConfigInputs#0" />
+            <element signature="method#loadVAVSwitches#0;class#ConfigInputs#0" />
+            <element signature="e#22524#22525#0" expanded="true" />
+            <element signature="e#22551#22552#0" expanded="true" />
+            <element signature="e#22591#22592#0" expanded="true" />
+            <element signature="e#22623#22624#0" expanded="true" />
+            <element signature="e#22668#22669#0" expanded="true" />
+            <element signature="e#22698#22699#0" expanded="true" />
+            <element signature="e#22755#22756#0" expanded="true" />
+            <element signature="e#22793#22794#0" expanded="true" />
+            <element signature="e#22837#22838#0" expanded="true" />
+            <element signature="e#22866#22867#0" expanded="true" />
+            <element signature="e#22921#22922#0" expanded="true" />
+            <element signature="e#22957#22958#0" expanded="true" />
+            <element signature="e#22999#23000#0" expanded="true" />
+            <element signature="e#23033#23034#0" expanded="true" />
+            <element signature="e#23091#23092#0" expanded="true" />
+            <element signature="e#23137#23138#0" expanded="true" />
+            <element signature="e#23184#23185#0" expanded="true" />
+            <element signature="e#23220#23221#0" expanded="true" />
+            <element signature="e#23285#23286#0" expanded="true" />
+            <element signature="e#23335#23336#0" expanded="true" />
+            <element signature="e#23378#23379#0" expanded="true" />
+            <element signature="e#23412#23413#0" expanded="true" />
+            <element signature="e#23485#23486#0" expanded="true" />
+            <element signature="e#23531#23532#0" expanded="true" />
+            <element signature="e#23562#23563#0" expanded="true" />
+            <element signature="e#23592#23593#0" expanded="true" />
+            <element signature="e#23635#23636#0" expanded="true" />
+            <element signature="e#23673#23674#0" expanded="true" />
+            <element signature="e#23710#23711#0" expanded="true" />
+            <element signature="e#23743#23744#0" expanded="true" />
+            <element signature="e#23796#23797#0" expanded="true" />
+            <element signature="e#23840#23841#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generators/StptDigitalInit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -1165,12 +1160,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/generators/ReadInputs.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="532" column="80" selection-start-line="532" selection-start-column="80" selection-end-line="532" selection-end-column="80" />
+        <state relative-caret-position="417">
+          <caret line="184" column="72" selection-start-line="184" selection-start-column="72" selection-end-line="184" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#GenerateBtnClicked#0;class#MainForm#0" />
+            <element signature="e#2671#2672#0" expanded="true" />
+            <element signature="e#2719#2720#0" expanded="true" />
+            <element signature="method#actionPerformed#0;class#GenerateBtnClicked#0;class#MainForm#0" />
           </folding>
         </state>
       </provider>

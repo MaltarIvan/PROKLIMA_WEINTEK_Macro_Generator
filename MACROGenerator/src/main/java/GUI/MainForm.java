@@ -10,6 +10,7 @@ import utilities.ConfigMain;
 import utilities.ConfigDigitalStpts;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -165,11 +166,15 @@ public class MainForm {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            fileChooser.setFileFilter(new FileNameExtensionFilter(".txt", "txt", "text"));
+            fileChooser.setDialogTitle("Choose Main Config file");
+
             int returnVal = fileChooser.showOpenDialog(mainView);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String path = fileChooser.getSelectedFile().getAbsolutePath();
                 mainConfigPath.setText(path);
             }
+            fileChooser.resetChoosableFileFilters();
         }
     }
 
@@ -177,11 +182,15 @@ public class MainForm {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            fileChooser.setFileFilter(new FileNameExtensionFilter(".xlsx", "xlsx"));
+            fileChooser.setDialogTitle("Choose Digital Stpt file");
+
             int returnVal = fileChooser.showOpenDialog(mainView);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String path = fileChooser.getSelectedFile().getAbsolutePath();
                 digitalStptPath.setText(path);
             }
+            fileChooser.resetChoosableFileFilters();
         }
     }
     
@@ -189,11 +198,15 @@ public class MainForm {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            fileChooser.setFileFilter(new FileNameExtensionFilter("EXCEL FILES", "xlsx"));
+            fileChooser.setDialogTitle("Choose Inputs file");
+
             int returnVal = fileChooser.showOpenDialog(mainView);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String path = fileChooser.getSelectedFile().getAbsolutePath();
                 inputsPath.setText(path);
             }
+            fileChooser.resetChoosableFileFilters();
         }
     }
 }
