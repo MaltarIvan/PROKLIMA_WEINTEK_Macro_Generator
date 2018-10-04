@@ -12,12 +12,14 @@ import utilities.ConfigOutputs;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Maltar on 3.10.2018..
  */
 public final class ReadOutputs {
-    private static final String STRING_TABLE_NAME = "DigitalStatesOutputs.xlsx";
+    private static final String STRING_TABLE_NAME = "DigitalStatesOutputs.xls";
     private static final String TABLE_SECTION_NAME = "DigitalStatesOutputs";
     private static final int TABLE_SECTION_ID = 25;
 
@@ -527,7 +529,7 @@ public final class ReadOutputs {
         return file;
     }
 
-    public static File generateStringTable(ConfigOutputs configOutputs, String path, MainForm mainForm) {
+    public static File generateStringTable(ConfigOutputs configOutputs, String path, MainForm mainForm) throws IOException {
         path += "\\" + STRING_TABLE_NAME;
 
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -545,7 +547,33 @@ public final class ReadOutputs {
             }
         }
 
-        // TODO: 4.10.2018. dovršiti
-        return null;
+        Collections.sort(states, new Comparator<States>() {
+
+            @Override
+            public int compare(States s1, States s2) {
+                return s1.getStateStringIndex() - s2.getStateStringIndex();
+            }
+        });
+
+        int stringID = 1;
+
+        for (States stts : states) {
+            for (int i = 0; i < stts.getStatesStr().get(0).length; i++) {
+                HSSFRow row = sheet.createRow(stringID);
+                row.createCell(0).setCellValue(TABLE_SECTION_ID);
+                row.createCell(2).setCellValue(stringID++);
+                for (int j = 0; j < stts.getStatesStr().size(); j++) {
+                    row.createCell(3 + j).setCellValue(stts.getStatesStr().get(j)[i]);
+                }
+            }
+        }
+
+        File file = new File(path);
+        FileOutputStream fileOut = new FileOutputStream(file);
+        workbook.write(fileOut);
+        fileOut.close();
+        workbook.close();
+        mainForm.getLogArea().append(STRING_TABLE_NAME + " excel file has been generated!\n");
+        return file;
     }
 }

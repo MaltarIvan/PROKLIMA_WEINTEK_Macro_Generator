@@ -765,7 +765,7 @@ public final class ReadInputs {
         workbook.write(fileOut);
         fileOut.close();
         workbook.close();
-        mainForm.getLogArea().append("Your excel file has been generated!\n");
+        mainForm.getLogArea().append(STRING_TABLE_NAME + " excel file has been generated!\n");
         return file;
     }
 }
