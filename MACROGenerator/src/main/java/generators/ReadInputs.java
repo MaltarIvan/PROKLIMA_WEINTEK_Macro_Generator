@@ -2,14 +2,24 @@ package generators;
 
 import GUI.MainForm;
 import entities.Signal;
+import entities.States;
 import exceptions.ConfigurationNotDoneException;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import utilities.ConfigInputs;
 import utilities.ConfigMain;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public final class ReadInputs {
+    private static final String STRING_TABLE_NAME = "DigitalStatesInputs.xls";
+    private static final int TABLE_SECTION_ID = 1;
+    private static final String TABLE_SECTION_NAME = "DigitalStatesInputs";
+
     private static final String READ_INPUTS_NAME = "ReadInputs.txt";
     private static final String HEADER_1 = "//**";
     private static final String HEADER_2 = "// @Version: 7";
@@ -298,7 +308,7 @@ public final class ReadInputs {
         bufferedWriter.write(line);
         bufferedWriter.newLine();
 
-        for (Signal signal : configInputs.getDegital()) {
+        for (Signal signal : configInputs.getDigital()) {
             line = "\t\tenabled = false";
             bufferedWriter.write(line);
             bufferedWriter.newLine();
@@ -704,6 +714,58 @@ public final class ReadInputs {
         bufferedWriter.close();
 
         mainForm.getLogArea().append("ReadInputs macro done!" + "\n");
+        return file;
+    }
+
+    public static File generateStringTable(ConfigInputs configInputs, String path, MainForm mainForm) throws IOException {
+        path += "\\" + STRING_TABLE_NAME;
+
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Book1");
+
+        HSSFRow firstRow = sheet.createRow(0);
+        firstRow.createCell(0).setCellValue(TABLE_SECTION_ID);
+        firstRow.createCell(1).setCellValue(TABLE_SECTION_NAME);
+        firstRow.createCell(2).setCellValue(0);
+
+        ArrayList<States> states = new ArrayList<>();
+        for (Signal signal : configInputs.getDigital()) {
+            if (!states.contains(signal.getStates())) {
+                states.add(signal.getStates());
+            }
+        }
+
+        if (!states.contains(configInputs.getFireDampers().getStates())) {
+            states.add(configInputs.getFireDampers().getStates());
+        }
+
+        Collections.sort(states, new Comparator<States>() {
+
+            @Override
+            public int compare(States s1, States s2) {
+                return s1.getStateStringIndex() - s2.getStateStringIndex();
+            }
+        });
+
+        int stringID = 1;
+
+        for (States stts : states) {
+            for (int i = 0; i < stts.getStatesStr().get(0).length; i++) {
+                HSSFRow row = sheet.createRow(stringID);
+                row.createCell(0).setCellValue(TABLE_SECTION_ID);
+                row.createCell(2).setCellValue(stringID++);
+                for (int j = 0; j < stts.getStatesStr().size(); j++) {
+                    row.createCell(3 + j).setCellValue(stts.getStatesStr().get(j)[i]);
+                }
+            }
+        }
+
+        File file = new File(path);
+        FileOutputStream fileOut = new FileOutputStream(file);
+        workbook.write(fileOut);
+        fileOut.close();
+        workbook.close();
+        mainForm.getLogArea().append("Your excel file has been generated!\n");
         return file;
     }
 }

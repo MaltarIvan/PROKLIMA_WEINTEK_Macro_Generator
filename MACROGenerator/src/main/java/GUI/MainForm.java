@@ -364,6 +364,7 @@ public class MainForm {
                 if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
                     path = fileChooser.getSelectedFile().getAbsolutePath();
                     ReadInputs.generateReadInputsMacro(configMain, configInputs, path, mainForm);
+                    ReadInputs.generateStringTable(configInputs, path, mainForm);
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();

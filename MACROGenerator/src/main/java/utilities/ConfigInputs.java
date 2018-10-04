@@ -543,12 +543,12 @@ public class ConfigInputs {
         this.path = path;
     }
 
-    public ArrayList<Signal> getDegital() {
+    public ArrayList<Signal> getDigital() {
         return digital;
     }
 
-    public void setDegital(ArrayList<Signal> degital) {
-        this.digital = degital;
+    public void setDigital(ArrayList<Signal> digital) {
+        this.digital = digital;
     }
 
     public ArrayList<Signal> getAnalog() {

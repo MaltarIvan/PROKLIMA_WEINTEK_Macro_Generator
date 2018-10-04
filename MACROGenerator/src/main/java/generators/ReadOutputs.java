@@ -2,16 +2,25 @@ package generators;
 
 import GUI.MainForm;
 import entities.Signal;
+import entities.States;
 import exceptions.ConfigurationNotDoneException;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import utilities.ConfigMain;
 import utilities.ConfigOutputs;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Created by Maltar on 3.10.2018..
  */
 public final class ReadOutputs {
+    private static final String STRING_TABLE_NAME = "DigitalStatesOutputs.xlsx";
+    private static final String TABLE_SECTION_NAME = "DigitalStatesOutputs";
+    private static final int TABLE_SECTION_ID = 25;
+
     private static final String READ_OUTPUTS_NAME = "ReadOutputs.txt";
     private static final String HEADER = "//**\n" +
             "// @Version: 7\n" +
@@ -516,5 +525,27 @@ public final class ReadOutputs {
 
         mainForm.getLogArea().append("ReadOutputs macro done!" + "\n");
         return file;
+    }
+
+    public static File generateStringTable(ConfigOutputs configOutputs, String path, MainForm mainForm) {
+        path += "\\" + STRING_TABLE_NAME;
+
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Book1");
+
+        HSSFRow firstRow = sheet.createRow(0);
+        firstRow.createCell(0).setCellValue(TABLE_SECTION_ID);
+        firstRow.createCell(1).setCellValue(TABLE_SECTION_NAME);
+        firstRow.createCell(2).setCellValue(0);
+
+        ArrayList<States> states = new ArrayList<>();
+        for (Signal signal : configOutputs.getDigital()) {
+            if (!states.contains(signal.getStates())) {
+                states.add(signal.getStates());
+            }
+        }
+
+        // TODO: 4.10.2018. dovršiti
+        return null;
     }
 }
