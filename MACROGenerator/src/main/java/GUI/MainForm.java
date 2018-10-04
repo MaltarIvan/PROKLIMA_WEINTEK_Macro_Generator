@@ -2,14 +2,8 @@ package GUI;
 
 import exceptions.ConfigurationNotDoneException;
 import exceptions.WrongFormatException;
-import generators.HMIInit;
-import generators.ReadInputs;
-import generators.ReadOutputs;
-import generators.StptDigitalInit;
-import utilities.ConfigInputs;
-import utilities.ConfigMain;
-import utilities.ConfigDigitalStpts;
-import utilities.ConfigOutputs;
+import generators.*;
+import utilities.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -45,6 +39,7 @@ public class MainForm {
     private JButton generateLoopCtrlsButton;
     private JTextField trendsPath;
     private JButton getTrendsFileButton;
+    private JButton generateTrendsButton;
 
     private JFileChooser fileChooser;
 
@@ -63,6 +58,7 @@ public class MainForm {
         generateDigitalStptButton.addActionListener(new GenerateDigitalBtnClicked(this));
         generateInputsButton.addActionListener(new GenerateInputsBtnClicked(this));
         generateOutputsButton.addActionListener(new GenerateOutputsBtnClicked(this));
+        generateTrendsButton.addActionListener(new GenerateTrendsBtnClicked(this));
     }
 
     public JTextField getMainConfigPath() {
@@ -315,6 +311,7 @@ public class MainForm {
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
             } catch (IOException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
@@ -368,6 +365,7 @@ public class MainForm {
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
             } catch (IOException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
@@ -421,6 +419,60 @@ public class MainForm {
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            } catch (IOException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+        }
+    }
+
+    private class GenerateTrendsBtnClicked implements ActionListener {
+        private MainForm mainForm;
+
+        public GenerateTrendsBtnClicked(MainForm mainForm) {
+            this.mainForm = mainForm;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            logArea.append("Config start..." + newLine);
+
+            ConfigMain configMain = new ConfigMain(mainConfigPath.getText());
+            ConfigTrends configTrends = new ConfigTrends(trendsPath.getText());
+            try {
+                configMain.getConfiguration();
+            } catch (IOException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            } catch (WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            try {
+                configTrends.getConfiguration();
+            } catch (IOException | WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            logArea.append("Config done!" + newLine);
+
+            try {
+                fileChooser.setCurrentDirectory(new File("."));
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                String path;
+
+                fileChooser.setDialogTitle("Choose macros location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    SetupTrends.generateSetupTrendsMacro(configMain, configTrends, path, mainForm);
+                }
+            } catch (ConfigurationNotDoneException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
             } catch (IOException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);

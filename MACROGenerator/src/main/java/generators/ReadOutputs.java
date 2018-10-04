@@ -35,35 +35,6 @@ public final class ReadOutputs {
     private static final String OPEN_MACRO_COMMAND = "macro_command main()";
     private static final String END_MACRO_COMMAND = "end macro_command";
 
-    private static final String DISP_STR_ID_START_DEC = "short DISP_STR_ID_START = ";
-    private static final String DISP_STR_ID_START = "DISP_STR_ID_START";
-    private static final String DISP_DATA_START_DEC = "short DISP_DATA_START = ";
-    private static final String DISP_DATA_START = "DISP_DATA_START";
-    private static final String MAX_DATA_PER_SCREEN_DEC = "short MAX_DATA_PER_SCREEN = ";
-    private static final String MAX_DATA_PER_SCREEN = "MAX_DATA_PER_SCREEN";
-
-    private static final String LINE_HIDDEN_START_DEC = "short LINE_HIDDEN_START = ";
-    private static final String LINE_HIDDEN_START = "LINE_HIDDEN_START";
-
-    private static final String VAV_NUMBER_REG_DEC = "short VAV_NUMBER_REG = ";
-    private static final String VAV_NUMBER_ADDR_DEC = "short VAV_NUMBER_ADDR = ";
-    private static final String VAV_STRING_ID_START_DEC = "short VAV_STRING_ID_START = ";
-    private static final String VAV_ADDR_START_DEC = "short VAV_ADDR_START = ";
-    private static final String VAV_REG_DEC = "short VAV_REG = ";
-    private static final String VAV_DATA_TYPE_DEC = "short VAV_DATA_TYPE = ";
-    private static final String VAV_SCALE_DEC = "short VAV_SCALE = ";
-    private static final String VAV_SPLY_REG_EN_REG_DEC = "short VAV_SPLY_REG_EN_REG = ";
-    private static final String VAV_SPLY_REG_EN_ADDR_START_DEC = "short VAV_SPLY_REG_EN_ADDR_START = ";
-    private static final String VAV_NUMBER_REG = "VAV_NUMBER_REG";
-    private static final String VAV_NUMBER_ADDR = "VAV_NUMBER_ADDR";
-    private static final String VAV_STRING_ID_START= "VAV_STRING_ID_START";
-    private static final String VAV_ADDR_START = "VAV_ADDR_START";
-    private static final String VAV_REG = "VAV_REG";
-    private static final String VAV_DATA_TYPE = "VAV_DATA_TYPE";
-    private static final String VAV_SCALE = "VAV_SCALE";
-    private static final String VAV_SPLY_REG_EN_REG = "VAV_SPLY_REG_EN_REG";
-    private static final String VAV_SPLY_REG_EN_ADDR_START = "VAV_SPLY_REG_EN_ADDR_START";
-
     private static final String COMMENT = "// ";
 
     private ReadOutputs() {}
@@ -135,20 +106,20 @@ public final class ReadOutputs {
                 "\n" +
                 "GetData(kkID, \"HMI\", \"kkID\", 1)\n" +
                 "\n" +
-                "reg = 4\n" +
-                "addr = 831\n" +
+                "reg = " + configMain.getTPConfigDW0Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW0Addr() + "\n" +
                 "TPConfigDW0 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 833\n" +
+                "reg = " + configMain.getTPConfigDW1Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW1Addr() + "\n" +
                 "TPConfigDW1 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 835\n" +
+                "reg = " + configMain.getTPConfigDW2Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW2Addr() + "\n" +
                 "TPConfigDW2 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 837\n" +
+                "reg = " + configMain.getTPConfigDW3Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW3Addr() + "\n" +
                 "TPConfigDW3 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 839\n" +
+                "reg = " + configMain.getTPConfigDW4Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW4Addr() + "\n" +
                 "TPConfigDW4 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
                 "\n" +
                 "GetData(outputsSelected, \"HMI\", \"OutputsSelected\", 1) // 0-digital 1-analog 2-vavs\n" +
