@@ -3,6 +3,7 @@ package GUI;
 import exceptions.ConfigurationNotDoneException;
 import exceptions.WrongFormatException;
 import generators.*;
+import main.Main;
 import utilities.*;
 
 import javax.swing.*;
@@ -59,6 +60,7 @@ public class MainForm {
         generateInputsButton.addActionListener(new GenerateInputsBtnClicked(this));
         generateOutputsButton.addActionListener(new GenerateOutputsBtnClicked(this));
         generateTrendsButton.addActionListener(new GenerateTrendsBtnClicked(this));
+        generateMainAnalogButton.addActionListener(new GenerateMainAnalogBtnClicked(this));
     }
 
     public JTextField getMainConfigPath() {
@@ -469,6 +471,59 @@ public class MainForm {
                 if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
                     path = fileChooser.getSelectedFile().getAbsolutePath();
                     SetupTrends.generateSetupTrendsMacro(configMain, configTrends, path, mainForm);
+                }
+            } catch (ConfigurationNotDoneException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            } catch (IOException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+        }
+    }
+
+    private class GenerateMainAnalogBtnClicked implements ActionListener {
+        private MainForm mainForm;
+
+        public GenerateMainAnalogBtnClicked(MainForm mainForm) {
+            this.mainForm = mainForm;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            logArea.append("Config start..." + newLine);
+
+            ConfigMain configMain = new ConfigMain(mainConfigPath.getText());
+            ConfigMainAnalog configMainAnalog = new ConfigMainAnalog(stptMainAnalogPath.getText());
+            try {
+                configMain.getConfiguration();
+            } catch (IOException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            } catch (WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            try {
+                configMainAnalog.getConfiguration();
+            } catch (IOException | WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            logArea.append("Config done!" + newLine);
+
+            try {
+                fileChooser.setCurrentDirectory(new File("."));
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                String path;
+
+                fileChooser.setDialogTitle("Choose macros location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    StptMainAnalog.generateStptMainAnalogMacro(configMain, configMainAnalog, path, mainForm);
                 }
             } catch (ConfigurationNotDoneException e) {
                 e.printStackTrace();

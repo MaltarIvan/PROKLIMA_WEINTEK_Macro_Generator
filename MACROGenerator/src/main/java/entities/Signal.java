@@ -15,6 +15,8 @@ public class Signal {
     private boolean disabled;
     private double scale;
     private int dataType;
+    private double lowLimit;
+    private double highLimit;
 
     public Signal() {
     }
@@ -129,6 +131,22 @@ public class Signal {
 
     public void setDataType(int dataType) {
         this.dataType = dataType;
+    }
+
+    public double getLowLimit() {
+        return lowLimit;
+    }
+
+    public void setLowLimit(double lowLimit) {
+        this.lowLimit = lowLimit;
+    }
+
+    public double getHighLimit() {
+        return highLimit;
+    }
+
+    public void setHighLimit(double highLimit) {
+        this.highLimit = highLimit;
     }
 
     @Override
