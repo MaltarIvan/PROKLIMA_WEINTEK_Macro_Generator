@@ -62,6 +62,7 @@ public class MainForm {
         generateTrendsButton.addActionListener(new GenerateTrendsBtnClicked(this));
         generateMainAnalogButton.addActionListener(new GenerateMainAnalogBtnClicked(this));
         generateAdvancedAnalogButton.addActionListener(new GenerateAdvancedAnalogBtnClicked(this));
+        generateLoopCtrlsButton.addActionListener(new GenerateLoopCtrlsBtnClicked(this));
     }
 
     public JTextField getMainConfigPath() {
@@ -586,6 +587,40 @@ public class MainForm {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
+        }
+    }
+
+    private class GenerateLoopCtrlsBtnClicked implements ActionListener {
+        private MainForm mainForm;
+
+        public GenerateLoopCtrlsBtnClicked(MainForm mainForm) {
+            this.mainForm = mainForm;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            logArea.append("Config start..." + newLine);
+
+            ConfigMain configMain = new ConfigMain(mainConfigPath.getText());
+            ConfigLoopCtrls configLoopCtrls = new ConfigLoopCtrls(loopCtrlsPath.getText());
+            try {
+                configMain.getConfiguration();
+            } catch (IOException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            } catch (WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            try {
+                configLoopCtrls.getConfiguration();
+            } catch (IOException | WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            logArea.append("Config done!" + newLine);
         }
     }
 

@@ -171,11 +171,7 @@ public class ConfigMainAnalog {
 
                     cell = row.getCell(10);
                     if (cell.getCellType() == CellType.BOOLEAN) {
-                        if (cell.getBooleanCellValue()) {
-                            signal.setDisabled(true);
-                        } else {
-                            signal.setDisabled(false);
-                        }
+                        signal.setDisabled(cell.getBooleanCellValue());
                     } else {
                         throw new WrongFormatException();
                     }
