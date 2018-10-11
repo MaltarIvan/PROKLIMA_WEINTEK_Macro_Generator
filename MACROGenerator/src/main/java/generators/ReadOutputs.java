@@ -455,12 +455,12 @@ public final class ReadOutputs {
                 "\tindex = 0\n" +
                 "\tfor i = 0 to MAX_DATA_PER_SCREEN - 1 step 1\n" +
                 "\t\tindex = i + (currentSection - 1) * MAX_DATA_PER_SCREEN \n" +
-                "\t\tSetData(stringIDs[index], \"HMI\", LW, INPUT_STR_ID_START + i, 1)\n" +
+                "\t\tSetData(stringIDs[index], \"HMI\", LW, DISP_STR_ID_START + i, 1)\n" +
                 "\t\tif digitalAnalog then // ako je analogno piši podatke iz dataPresent array-a\n" +
                 "\t\t\thide = false\n" +
                 "\t\t\tSetData(hide, \"HMI\", LB, LINE_HIDDEN_START + i, 1) \n" +
                 "\t\t\n" +
-                "\t\t\tSetData(dataPresent[i], \"HMI\", LW, INPUT_DISP_START + i * 8, 1)\n" +
+                "\t\t\tSetData(dataPresent[i], \"HMI\", LW, DISP_STR_ID_START + i * 8, 1)\n" +
                 "\t\t\t// izbriši ostale labele i input display-e (u slučaju da se u radu neke komponente isključe)\n" +
                 "\t\t\tshort emptyStringID = 0\n" +
                 "\t\t\tif index >= dataCounter then\n" +
@@ -468,18 +468,18 @@ public final class ReadOutputs {
                 "\t\t\t\tSetData(hide, \"HMI\", LB, LINE_HIDDEN_START + i, 1) \n" +
                 "\t\t\t\n" +
                 "\t\t\t\tfloat sPom = 0\n" +
-                "\t\t\t\tSetData(emptyStringID, \"HMI\", LW, INPUT_STR_ID_START + i, 1)\n" +
-                "\t\t\t\tSetData(sPom, \"HMI\", LW, INPUT_DISP_START + i * 8, 1)\n" +
+                "\t\t\t\tSetData(emptyStringID, \"HMI\", LW, DISP_STR_ID_START + i, 1)\n" +
+                "\t\t\t\tSetData(sPom, \"HMI\", LW, DISP_DATA_START + i * 8, 1)\n" +
                 "\t\t\tend if\n" +
                 "\t\telse // ako je digitalno piši podatke na temelju statesPresent array-a\n" +
                 "\t\t\tstringID = stateStringIDsStart[index] + statesPresent[i]\n" +
                 "\t\t\t\n" +
-                "\t\t\tSetData(stringID, \"HMI\", LW, INPUT_DISP_START + i * 8, 1)\n" +
+                "\t\t\tSetData(stringID, \"HMI\", LW, DISP_DATA_START + i * 8, 1)\n" +
                 "\t\t\t\n" +
                 "\t\t\t// izbriši ostale labele i input display-e (u slučaju da se u radu neke komponente isključe)\n" +
                 "\t\t\tif index >= dataCounter then\n" +
-                "\t\t\t\tSetData(emptyStringID, \"HMI\", LW, INPUT_STR_ID_START + i, 1)\n" +
-                "\t\t\t\tSetData(emptyStringID, \"HMI\", LW, INPUT_DISP_START + i * 8, 1)\n" +
+                "\t\t\t\tSetData(emptyStringID, \"HMI\", LW, DISP_STR_ID_START + i, 1)\n" +
+                "\t\t\t\tSetData(emptyStringID, \"HMI\", LW, DISP_DATA_START + i * 8, 1)\n" +
                 "\t\t\tend if\t\n" +
                 "\t\tend if\n" +
                 "\tnext i\t\t\n" +
