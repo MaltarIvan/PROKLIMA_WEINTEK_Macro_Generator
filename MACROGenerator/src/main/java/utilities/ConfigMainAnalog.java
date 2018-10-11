@@ -177,17 +177,10 @@ public class ConfigMainAnalog {
                     }
 
                     cell = row.getCell(11);
-                    switch (cell.getCellType()) {
-                        case STRING:
-                            if (!cell.getStringCellValue().equals("x")) {
-                                signal.setScale(Double.parseDouble(cell.getStringCellValue()));
-                            }
-                            break;
-                        case NUMERIC:
-                            signal.setScale(cell.getNumericCellValue());
-                            break;
-                        default:
-                            throw new WrongFormatException();
+                    if (cell.getCellType() == CellType.BOOLEAN) {
+                        signal.setScale(cell.getBooleanCellValue() ? 0.1 : 1.0);
+                    } else {
+                        throw new WrongFormatException();
                     }
 
                     cell = row.getCell(12);
