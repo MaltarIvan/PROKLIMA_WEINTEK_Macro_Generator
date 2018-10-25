@@ -621,6 +621,25 @@ public class MainForm {
             }
 
             logArea.append("Config done!" + newLine);
+
+            try {
+                fileChooser.setCurrentDirectory(new File("."));
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                String path;
+
+                fileChooser.setDialogTitle("Choose macros location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    LoopList.generateLoopListMacro(configMain, configLoopCtrls, path, mainForm);
+                }
+            } catch (ConfigurationNotDoneException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            } catch (IOException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
         }
     }
 
