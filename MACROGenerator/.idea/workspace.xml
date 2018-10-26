@@ -27,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainForm.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainForm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="622" column="0" lean-forward="false" selection-start-line="622" selection-start-column="0" selection-end-line="622" selection-end-column="0" />
+            <state relative-caret-position="312">
+              <caret line="724" column="0" lean-forward="true" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setGetOutputsFileButton#0;class#MainForm#0" expanded="false" />
@@ -50,6 +50,8 @@
                 <element signature="class#GenerateOutputsBtnClicked#0;class#MainForm#0" expanded="false" />
                 <element signature="class#GenerateTrendsBtnClicked#0;class#MainForm#0" expanded="false" />
                 <element signature="class#GenerateMainAnalogBtnClicked#0;class#MainForm#0" expanded="false" />
+                <element signature="class#GenerateAdvancedAnalogBtnClicked#0;class#MainForm#0" expanded="false" />
+                <element signature="class#GenerateLoopCtrlsBtnClicked#0;class#MainForm#0" expanded="false" />
                 <element signature="class#GetMainConfigBtnClicked#0;class#MainForm#0" expanded="false" />
                 <element signature="class#GetDigitalStptBtnClicked#0;class#MainForm#0" expanded="false" />
                 <element signature="class#GetInputsBtnClicked#0;class#MainForm#0" expanded="false" />
@@ -66,8 +68,8 @@
       <file leaf-file-name="LoopList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/generators/LoopList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="378" column="30" lean-forward="true" selection-start-line="378" selection-start-column="30" selection-end-line="378" selection-end-column="30" />
+            <state relative-caret-position="8880">
+              <caret line="378" column="30" lean-forward="false" selection-start-line="378" selection-start-column="30" selection-end-line="378" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,11 +77,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigTrends.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConfigTrends.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8837">
-              <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="16" />
+            <state relative-caret-position="166">
+              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+              <folding>
+                <element signature="method#loadRoomPressures#0;class#ConfigTrends#0" expanded="false" />
+                <element signature="method#loadVAVs#0;class#ConfigTrends#0" expanded="false" />
+                <element signature="e#17802#17803#0" expanded="true" />
+                <element signature="e#17829#17830#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SetupTrends.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/generators/SetupTrends.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="108" column="33" lean-forward="false" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -101,34 +118,7 @@
             <state relative-caret-position="1920">
               <caret line="93" column="27" lean-forward="false" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1017#1018#0" expanded="false" />
-                <element signature="e#1049#1050#0" expanded="false" />
                 <element signature="method#loadVAVs#0;class#ConfigOutputs#0" expanded="false" />
-                <element signature="e#15159#15160#0" expanded="false" />
-                <element signature="e#15186#15187#0" expanded="false" />
-                <element signature="e#15226#15227#0" expanded="false" />
-                <element signature="e#15258#15259#0" expanded="false" />
-                <element signature="e#15303#15304#0" expanded="false" />
-                <element signature="e#15333#15334#0" expanded="false" />
-                <element signature="e#15390#15391#0" expanded="false" />
-                <element signature="e#15428#15429#0" expanded="false" />
-                <element signature="e#15472#15473#0" expanded="false" />
-                <element signature="e#15501#15502#0" expanded="false" />
-                <element signature="e#15556#15557#0" expanded="false" />
-                <element signature="e#15592#15593#0" expanded="false" />
-                <element signature="e#15635#15636#0" expanded="false" />
-                <element signature="e#15662#15663#0" expanded="false" />
-                <element signature="e#15714#15715#0" expanded="false" />
-                <element signature="e#15746#15747#0" expanded="false" />
-                <element signature="e#15777#15778#0" expanded="false" />
-                <element signature="e#15807#15808#0" expanded="false" />
-                <element signature="e#15850#15851#0" expanded="false" />
-                <element signature="e#15888#15889#0" expanded="false" />
-                <element signature="e#15925#15926#0" expanded="false" />
-                <element signature="e#15958#15959#0" expanded="false" />
-                <element signature="e#16011#16012#0" expanded="false" />
-                <element signature="e#16055#16056#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -149,8 +139,8 @@
       <file leaf-file-name="StptMainAnalog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/generators/StptMainAnalog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="200" selection-end-column="9" />
+            <state relative-caret-position="2304">
+              <caret line="103" column="8" lean-forward="false" selection-start-line="103" selection-start-column="8" selection-end-line="200" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -207,8 +197,6 @@
         <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigInputs.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/ReadInputs.java" />
         <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.form" />
-        <option value="$PROJECT_DIR$/src/main/java/generators/SetupTrends.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/Signal.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/StptAdvancedAnalog.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/sets/RoomCtrls.java" />
@@ -221,6 +209,8 @@
         <option value="$PROJECT_DIR$/src/main/java/generators/StptMainAnalog.java" />
         <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/LoopList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java" />
+        <option value="$PROJECT_DIR$/src/main/java/generators/SetupTrends.java" />
       </list>
     </option>
   </component>
@@ -263,9 +253,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -442,6 +430,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -752,7 +742,93 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="222" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/generators/SetupTrends.java</url>
+          <line>146</line>
+          <properties />
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>122</line>
+          <properties />
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>133</line>
+          <properties />
+          <option name="timeStamp" value="225" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>157</line>
+          <properties />
+          <option name="timeStamp" value="226" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>168</line>
+          <properties />
+          <option name="timeStamp" value="227" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>182</line>
+          <properties />
+          <option name="timeStamp" value="228" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>195</line>
+          <properties />
+          <option name="timeStamp" value="229" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>204</line>
+          <properties />
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>218</line>
+          <properties />
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>229</line>
+          <properties />
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>243</line>
+          <properties />
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>256</line>
+          <properties />
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>249</line>
+          <properties />
+          <option name="timeStamp" value="235" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java</url>
+          <line>267</line>
+          <properties />
+          <option name="timeStamp" value="236" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="237" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -964,13 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/generators/SetupTrends.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="398" column="7" lean-forward="false" selection-start-line="398" selection-start-column="7" selection-end-line="398" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generators/StptAdvancedAnalog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -1011,34 +1080,7 @@
         <state relative-caret-position="1920">
           <caret line="93" column="27" lean-forward="false" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1017#1018#0" expanded="false" />
-            <element signature="e#1049#1050#0" expanded="false" />
             <element signature="method#loadVAVs#0;class#ConfigOutputs#0" expanded="false" />
-            <element signature="e#15159#15160#0" expanded="false" />
-            <element signature="e#15186#15187#0" expanded="false" />
-            <element signature="e#15226#15227#0" expanded="false" />
-            <element signature="e#15258#15259#0" expanded="false" />
-            <element signature="e#15303#15304#0" expanded="false" />
-            <element signature="e#15333#15334#0" expanded="false" />
-            <element signature="e#15390#15391#0" expanded="false" />
-            <element signature="e#15428#15429#0" expanded="false" />
-            <element signature="e#15472#15473#0" expanded="false" />
-            <element signature="e#15501#15502#0" expanded="false" />
-            <element signature="e#15556#15557#0" expanded="false" />
-            <element signature="e#15592#15593#0" expanded="false" />
-            <element signature="e#15635#15636#0" expanded="false" />
-            <element signature="e#15662#15663#0" expanded="false" />
-            <element signature="e#15714#15715#0" expanded="false" />
-            <element signature="e#15746#15747#0" expanded="false" />
-            <element signature="e#15777#15778#0" expanded="false" />
-            <element signature="e#15807#15808#0" expanded="false" />
-            <element signature="e#15850#15851#0" expanded="false" />
-            <element signature="e#15888#15889#0" expanded="false" />
-            <element signature="e#15925#15926#0" expanded="false" />
-            <element signature="e#15958#15959#0" expanded="false" />
-            <element signature="e#16011#16012#0" expanded="false" />
-            <element signature="e#16055#16056#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1098,16 +1140,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generators/StptMainAnalog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="200" selection-end-column="9" />
+        <state relative-caret-position="2304">
+          <caret line="103" column="8" lean-forward="false" selection-start-line="103" selection-start-column="8" selection-end-line="200" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/generators/LoopList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8880">
+          <caret line="378" column="30" lean-forward="false" selection-start-line="378" selection-start-column="30" selection-end-line="378" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding>
+            <element signature="method#loadRoomPressures#0;class#ConfigTrends#0" expanded="false" />
+            <element signature="method#loadVAVs#0;class#ConfigTrends#0" expanded="false" />
+            <element signature="e#17802#17803#0" expanded="true" />
+            <element signature="e#17829#17830#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/generators/SetupTrends.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="108" column="33" lean-forward="false" selection-start-line="108" selection-start-column="33" selection-end-line="108" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="622" column="0" lean-forward="false" selection-start-line="622" selection-start-column="0" selection-end-line="622" selection-end-column="0" />
+        <state relative-caret-position="312">
+          <caret line="724" column="0" lean-forward="true" selection-start-line="724" selection-start-column="0" selection-end-line="724" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setGetOutputsFileButton#0;class#MainForm#0" expanded="false" />
@@ -1126,6 +1199,8 @@
             <element signature="class#GenerateOutputsBtnClicked#0;class#MainForm#0" expanded="false" />
             <element signature="class#GenerateTrendsBtnClicked#0;class#MainForm#0" expanded="false" />
             <element signature="class#GenerateMainAnalogBtnClicked#0;class#MainForm#0" expanded="false" />
+            <element signature="class#GenerateAdvancedAnalogBtnClicked#0;class#MainForm#0" expanded="false" />
+            <element signature="class#GenerateLoopCtrlsBtnClicked#0;class#MainForm#0" expanded="false" />
             <element signature="class#GetMainConfigBtnClicked#0;class#MainForm#0" expanded="false" />
             <element signature="class#GetDigitalStptBtnClicked#0;class#MainForm#0" expanded="false" />
             <element signature="class#GetInputsBtnClicked#0;class#MainForm#0" expanded="false" />
@@ -1135,24 +1210,6 @@
             <element signature="class#GetLoopCtrlsBtnClicked#0;class#MainForm#0" expanded="false" />
             <element signature="class#GetTrendsBtnClicked#0;class#MainForm#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/generators/LoopList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="378" column="30" lean-forward="true" selection-start-line="378" selection-start-column="30" selection-end-line="378" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8837">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>

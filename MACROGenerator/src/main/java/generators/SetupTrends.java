@@ -106,6 +106,7 @@ public final class SetupTrends {
                 "short VAVNrEn\n" +
                 "\n" +
                 "short i\n" +
+                "short state\n" +
                 "\n" +
                 "GetData(setupTrendsInitDone, \"HMI\", \"CheckingSignalsDone\", 1)\n" +
                 "SetData(enable, \"HMI\", \"SetupTrendsScreenActive\", 1)\n" +

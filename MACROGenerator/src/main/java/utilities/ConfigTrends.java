@@ -114,7 +114,7 @@ public class ConfigTrends {
                     }
                 }
                 int last = row.getLastCellNum();
-                if (last >= 21) {
+                if (last >= 12) {
                     Signal signal = new Signal();
                     cell = row.getCell(1);
                     if (cell.getCellType() == CellType.STRING) {
