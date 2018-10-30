@@ -63,6 +63,7 @@ public class MainForm {
         generateMainAnalogButton.addActionListener(new GenerateMainAnalogBtnClicked(this));
         generateAdvancedAnalogButton.addActionListener(new GenerateAdvancedAnalogBtnClicked(this));
         generateLoopCtrlsButton.addActionListener(new GenerateLoopCtrlsBtnClicked(this));
+        generateAllMacros.addActionListener(new GenerateAllBtnClicked(this));
     }
 
     public JTextField getMainConfigPath() {
@@ -605,10 +606,7 @@ public class MainForm {
             ConfigLoopCtrls configLoopCtrls = new ConfigLoopCtrls(loopCtrlsPath.getText());
             try {
                 configMain.getConfiguration();
-            } catch (IOException e) {
-                e.printStackTrace();
-                logArea.append(e.getMessage() + newLine);
-            } catch (WrongFormatException e) {
+            } catch (IOException | WrongFormatException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
@@ -633,10 +631,72 @@ public class MainForm {
                     path = fileChooser.getSelectedFile().getAbsolutePath();
                     LoopList.generateLoopListMacro(configMain, configLoopCtrls, path, mainForm);
                 }
-            } catch (ConfigurationNotDoneException e) {
+            } catch (ConfigurationNotDoneException | IOException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
-            } catch (IOException e) {
+            }
+        }
+    }
+
+    private class GenerateAllBtnClicked implements ActionListener {
+        private MainForm mainForm;
+
+        public GenerateAllBtnClicked(MainForm mainForm) {
+            this.mainForm = mainForm;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            logArea.append("Config start..." + newLine);
+            ConfigMain configMain = new ConfigMain(mainConfigPath.getText());
+            ConfigInputs configInputs = new ConfigInputs(inputsPath.getText());
+            ConfigOutputs configOutputs = new ConfigOutputs(outputsPath.getText());
+            ConfigMainAnalog configMainAnalog = new ConfigMainAnalog(stptMainAnalogPath.getText());
+            ConfigAdvancedAnalog configAdvancedAnalog = new ConfigAdvancedAnalog(stptAdvancedAnalogPath.getText());
+            ConfigDigitalStpts configDigitalStpts = new ConfigDigitalStpts(digitalStptPath.getText());
+            ConfigLoopCtrls configLoopCtrls = new ConfigLoopCtrls(loopCtrlsPath.getText());
+            ConfigTrends configTrends = new ConfigTrends(trendsPath.getText());
+
+            try {
+                configMain.getConfiguration();
+                configInputs.getConfiguration();
+                configOutputs.getConfiguration();
+                configMainAnalog.getConfiguration();;
+                configAdvancedAnalog.getConfiguration();
+                configDigitalStpts.getConfiguration();
+                configLoopCtrls.getConfiguration();
+                configTrends.getConfiguration();
+            } catch (IOException | WrongFormatException e) {
+                e.printStackTrace();
+                logArea.append(e.getMessage() + newLine);
+            }
+
+            logArea.append("Config done!" + newLine);
+
+            try {
+                fileChooser.setCurrentDirectory(new File("."));
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fileChooser.setAcceptAllFileFilterUsed(false);
+                String path;
+
+                fileChooser.setDialogTitle("Choose macros location");
+                if (fileChooser.showSaveDialog(mainView) == JFileChooser.APPROVE_OPTION) {
+                    path = fileChooser.getSelectedFile().getAbsolutePath();
+                    HMIInit.generateMacro(configMain, configDigitalStpts, path, mainForm);
+                    LoopList.generateLoopListMacro(configMain, configLoopCtrls, path, mainForm);
+                    ReadInputs.generateReadInputsMacro(configMain, configInputs, path, mainForm);
+                    ReadInputs.generateStringTable(configInputs, path, mainForm);
+                    ReadOutputs.generateReadOutputsMacro(configMain, configOutputs, path, mainForm);
+                    ReadOutputs.generateStringTable(configOutputs, path, mainForm);
+                    SetupTrends.generateSetupTrendsMacro(configMain, configTrends, path, mainForm);
+                    StptAdvancedAnalog.generateStptAdvancedAnalogMacro(configMain, configAdvancedAnalog, path, mainForm);
+                    StptDigitalInit.generateStptMainDigitalMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedInputsMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedFanMacro(configMain, configDigitalStpts, path, mainForm);
+                    StptDigitalInit.generateStptAdvancedTempMacro(configMain, configDigitalStpts, path, mainForm);
+                }
+            } catch (ConfigurationNotDoneException | IOException e) {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
