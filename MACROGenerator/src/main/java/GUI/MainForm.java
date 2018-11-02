@@ -673,6 +673,7 @@ public class MainForm {
                     ReadOutputs.generateReadOutputsMacro(configMain, configOutputs, path, mainForm);
                     ReadOutputs.generateStringTable(configOutputs, path, mainForm);
                     SetupTrends.generateSetupTrendsMacro(configMain, configTrends, path, mainForm);
+                    StptMainAnalog.generateStptMainAnalogMacro(configMain, configMainAnalog, path, mainForm);
                     StptAdvancedAnalog.generateStptAdvancedAnalogMacro(configMain, configAdvancedAnalog, path, mainForm);
                     StptDigitalInit.generateStptMainDigitalMacro(configMain, configDigitalStpts, path, mainForm);
                     StptDigitalInit.generateStptAdvancedDigitalMacro(configMain, configDigitalStpts, path, mainForm);

@@ -181,6 +181,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Digital Stpt Macros"/>
+              <toolTipText value="HMI_init and digital stpts inits"/>
             </properties>
           </component>
           <component id="47244" class="javax.swing.JButton" binding="generateMainAnalogButton">
@@ -191,6 +192,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Main Analog Macro"/>
+              <toolTipText value="StptMainAnalog_init"/>
             </properties>
           </component>
           <component id="9c640" class="javax.swing.JButton" binding="generateInputsButton">
@@ -201,6 +203,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Inputs Macro"/>
+              <toolTipText value="ReadInputs"/>
             </properties>
           </component>
           <component id="10f27" class="javax.swing.JButton" binding="generateAdvancedAnalogButton">
@@ -211,6 +214,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Advanced Analog Macro"/>
+              <toolTipText value="StptAdvancedAnalog_init"/>
             </properties>
           </component>
           <component id="14344" class="javax.swing.JButton" binding="generateOutputsButton">
@@ -221,6 +225,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Outputs Macro"/>
+              <toolTipText value="ReadOutputs"/>
             </properties>
           </component>
           <component id="ef755" class="javax.swing.JButton" binding="generateLoopCtrlsButton">
@@ -231,6 +236,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Loop Ctrl Macro"/>
+              <toolTipText value="LoopList_init"/>
             </properties>
           </component>
           <component id="2470d" class="javax.swing.JButton" binding="generateTrendsButton">
@@ -241,6 +247,7 @@
               <background color="-10175679"/>
               <foreground color="-16777216"/>
               <text value="Generate Trends Macro"/>
+              <toolTipText value="SetupTrends_init"/>
             </properties>
           </component>
         </children>

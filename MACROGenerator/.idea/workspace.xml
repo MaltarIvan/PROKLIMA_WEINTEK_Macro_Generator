@@ -29,7 +29,7 @@
       <file leaf-file-name="ConfigTrends.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4039">
+            <state relative-caret-position="4964">
               <caret line="459" selection-start-line="459" selection-end-line="459" />
               <folding>
                 <element signature="method#loadRoomPressures#0;class#ConfigTrends#0" />
@@ -42,7 +42,7 @@
       <file leaf-file-name="SetupTrends.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/generators/SetupTrends.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
+            <state relative-caret-position="1139">
               <caret line="73" column="61" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
             </state>
           </provider>
@@ -51,17 +51,17 @@
       <file leaf-file-name="StptAdvancedAnalog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/generators/StptAdvancedAnalog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="182" column="28" lean-forward="true" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
+            <state relative-caret-position="2975">
+              <caret line="182" column="28" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainForm.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainForm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2833">
-              <caret line="752" lean-forward="true" selection-start-line="752" selection-end-line="752" />
+            <state relative-caret-position="189">
+              <caret line="675" column="109" selection-start-line="675" selection-start-column="109" selection-end-line="675" selection-end-column="109" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4674#4805#0" />
@@ -75,27 +75,21 @@
                 <element signature="e#7256#7403#0" />
                 <element signature="e#7516#7679#0" />
                 <element signature="e#7782#7925#0" />
-                <element signature="e#8327#11154#0" />
-                <element signature="e#11032#13194#0" />
-                <element signature="e#13200#15374#0" />
-                <element signature="e#15380#17462#0" />
-                <element signature="e#17468#19592#0" />
-                <element signature="e#19598#21762#0" />
-                <element signature="e#21768#23630#0" />
-                <element signature="e#23636#27430#0" />
-                <element signature="e#23792#23793#0" expanded="true" />
-                <element signature="e#23840#23841#0" expanded="true" />
-                <element signature="e#27436#28066#0" />
-                <element signature="e#28072#28699#0" />
-                <element signature="e#28709#29326#0" />
-                <element signature="e#29332#29952#0" />
-                <element signature="e#29958#30596#0" />
-                <element signature="e#30602#31252#0" />
-                <element signature="e#31258#31885#0" />
-                <element signature="e#31891#32508#0" />
+                <element signature="e#8327#10959#0" />
+                <element signature="e#10965#13072#0" />
+                <element signature="e#13078#15197#0" />
+                <element signature="e#15203#17230#0" />
+                <element signature="e#17236#19305#0" />
+                <element signature="e#19311#21420#0" />
+                <element signature="e#21426#23233#0" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainForm.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file leaf-file-name="ConfigAdvancedAnalog.java" pinned="false" current-in-tab="false">
@@ -179,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigOutputs.java" />
         <option value="$PROJECT_DIR$/src/main/java/utilities/ConfigInputs.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/ReadInputs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.form" />
         <option value="$PROJECT_DIR$/src/main/java/entities/Signal.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/sets/RoomCtrls.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/LoopCtrls.java" />
@@ -196,6 +189,7 @@
         <option value="$PROJECT_DIR$/src/main/java/exceptions/ConfigurationNotDoneException.java" />
         <option value="$PROJECT_DIR$/src/main/java/generators/StptAdvancedAnalog.java" />
         <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GUI/MainForm.form" />
       </list>
     </option>
   </component>
@@ -228,9 +222,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,6 +265,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MACROGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MACROGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="MainForm" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="MACROGenerator" type="b2602c69:ProjectViewProjectNode" />
@@ -441,7 +444,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3290735" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32861805" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -452,18 +455,18 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39833158" />
-      <window_info anchor="right" id="Properties" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Nl-Palette" order="2" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="right" id="Properties" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290735" />
@@ -699,36 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1920">
           <caret line="93" column="27" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="27" />
-          <folding>
-            <element signature="imports" />
-            <element signature="e#1017#1018#0" />
-            <element signature="e#1049#1050#0" />
-            <element signature="method#loadVAVs#0;class#ConfigOutputs#0" />
-            <element signature="e#15159#15160#0" />
-            <element signature="e#15186#15187#0" />
-            <element signature="e#15226#15227#0" />
-            <element signature="e#15258#15259#0" />
-            <element signature="e#15303#15304#0" />
-            <element signature="e#15333#15334#0" />
-            <element signature="e#15390#15391#0" />
-            <element signature="e#15428#15429#0" />
-            <element signature="e#15472#15473#0" />
-            <element signature="e#15501#15502#0" />
-            <element signature="e#15556#15557#0" />
-            <element signature="e#15592#15593#0" />
-            <element signature="e#15635#15636#0" />
-            <element signature="e#15662#15663#0" />
-            <element signature="e#15714#15715#0" />
-            <element signature="e#15746#15747#0" />
-            <element signature="e#15777#15778#0" />
-            <element signature="e#15807#15808#0" />
-            <element signature="e#15850#15851#0" />
-            <element signature="e#15888#15889#0" />
-            <element signature="e#15925#15926#0" />
-            <element signature="e#15958#15959#0" />
-            <element signature="e#16011#16012#0" />
-            <element signature="e#16055#16056#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -802,9 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generators/LoopList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
@@ -817,7 +787,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utilities/ConfigTrends.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4039">
+        <state relative-caret-position="4964">
           <caret line="459" selection-start-line="459" selection-end-line="459" />
           <folding>
             <element signature="method#loadRoomPressures#0;class#ConfigTrends#0" />
@@ -828,7 +798,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generators/SetupTrends.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="1139">
           <caret line="73" column="61" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
         </state>
       </provider>
@@ -842,15 +812,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/generators/StptAdvancedAnalog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="182" column="28" lean-forward="true" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
+        <state relative-caret-position="2975">
+          <caret line="182" column="28" selection-start-line="182" selection-start-column="28" selection-end-line="182" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2833">
-          <caret line="752" lean-forward="true" selection-start-line="752" selection-end-line="752" />
+        <state relative-caret-position="189">
+          <caret line="675" column="109" selection-start-line="675" selection-start-column="109" selection-end-line="675" selection-end-column="109" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4674#4805#0" />
@@ -864,27 +834,19 @@
             <element signature="e#7256#7403#0" />
             <element signature="e#7516#7679#0" />
             <element signature="e#7782#7925#0" />
-            <element signature="e#8327#11154#0" />
-            <element signature="e#11032#13194#0" />
-            <element signature="e#13200#15374#0" />
-            <element signature="e#15380#17462#0" />
-            <element signature="e#17468#19592#0" />
-            <element signature="e#19598#21762#0" />
-            <element signature="e#21768#23630#0" />
-            <element signature="e#23636#27430#0" />
-            <element signature="e#23792#23793#0" expanded="true" />
-            <element signature="e#23840#23841#0" expanded="true" />
-            <element signature="e#27436#28066#0" />
-            <element signature="e#28072#28699#0" />
-            <element signature="e#28709#29326#0" />
-            <element signature="e#29332#29952#0" />
-            <element signature="e#29958#30596#0" />
-            <element signature="e#30602#31252#0" />
-            <element signature="e#31258#31885#0" />
-            <element signature="e#31891#32508#0" />
+            <element signature="e#8327#10959#0" />
+            <element signature="e#10965#13072#0" />
+            <element signature="e#13078#15197#0" />
+            <element signature="e#15203#17230#0" />
+            <element signature="e#17236#19305#0" />
+            <element signature="e#19311#21420#0" />
+            <element signature="e#21426#23233#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/MainForm.form">
+      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
   </component>
   <component name="masterDetails">
