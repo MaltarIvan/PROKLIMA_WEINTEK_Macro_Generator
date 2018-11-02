@@ -9,8 +9,5 @@
         <module name="MACROGenerator" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="MACROGenerator" target="7" />
-    </bytecodeTargetLevel>
   </component>
 </project>

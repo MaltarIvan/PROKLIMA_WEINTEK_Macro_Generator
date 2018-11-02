@@ -295,8 +295,6 @@ public class MainForm {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
-            
-            logArea.append("Config done!" + newLine);
 
             try {
                 fileChooser.setCurrentDirectory(new File("."));
@@ -354,8 +352,6 @@ public class MainForm {
                 logArea.append(e.getMessage() + newLine);
             }
 
-            logArea.append("Config done!" + newLine);
-
             try {
                 fileChooser.setCurrentDirectory(new File("."));
                 fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -407,8 +403,6 @@ public class MainForm {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
-
-            logArea.append("Config done!" + newLine);
 
             try {
                 fileChooser.setCurrentDirectory(new File("."));
@@ -462,8 +456,6 @@ public class MainForm {
                 logArea.append(e.getMessage() + newLine);
             }
 
-            logArea.append("Config done!" + newLine);
-
             try {
                 fileChooser.setCurrentDirectory(new File("."));
                 fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -514,8 +506,6 @@ public class MainForm {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
-
-            logArea.append("Config done!" + newLine);
 
             try {
                 fileChooser.setCurrentDirectory(new File("."));
@@ -568,8 +558,6 @@ public class MainForm {
                 logArea.append(e.getMessage() + newLine);
             }
 
-            logArea.append("Config done!" + newLine);
-
             try {
                 fileChooser.setCurrentDirectory(new File("."));
                 fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -617,8 +605,6 @@ public class MainForm {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
-
-            logArea.append("Config done!" + newLine);
 
             try {
                 fileChooser.setCurrentDirectory(new File("."));
@@ -670,8 +656,6 @@ public class MainForm {
                 e.printStackTrace();
                 logArea.append(e.getMessage() + newLine);
             }
-
-            logArea.append("Config done!" + newLine);
 
             try {
                 fileChooser.setCurrentDirectory(new File("."));

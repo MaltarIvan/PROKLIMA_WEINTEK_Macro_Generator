@@ -78,20 +78,20 @@ public final class StptAdvancedAnalog {
                 "\n" +
                 "GetData(kkID, \"HMI\", \"kkID\", 1)\n" +
                 "\n" +
-                "reg = 4\n" +
-                "addr = 831\n" +
+                "reg = " + configMain.getTPConfigDW0Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW0Addr() + "\n" +
                 "TPConfigDW0 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 833\n" +
+                "reg = " + configMain.getTPConfigDW1Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW1Addr() + "\n" +
                 "TPConfigDW1 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 835\n" +
+                "reg = " + configMain.getTPConfigDW2Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW2Addr() + "\n" +
                 "TPConfigDW2 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 837\n" +
+                "reg = " + configMain.getTPConfigDW3Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW3Addr() + "\n" +
                 "TPConfigDW3 = GetUnsignedIntFromPLC(kkID, reg, addr)\n" +
-                "reg = 4\n" +
-                "addr = 839\n" +
+                "reg = " + configMain.getTPConfigDW4Reg() + "\n" +
+                "addr = " + configMain.getTPConfigDW4Addr() + "\n" +
                 "TPConfigDW4 = GetUnsignedIntFromPLC(kkID, reg, addr)\n";
 
         lines = line.split("\n");
@@ -102,79 +102,79 @@ public final class StptAdvancedAnalog {
         bufferedWriter.newLine();
 
         for (Signal signal : configAdvancedAnalog.getSignals()) {
-            line = "\t\t\tenabled = false";
+            line = "enabled = false";
             bufferedWriter.write(line);
             bufferedWriter.newLine();
-            line = "\t\t\t" + COMMENT + signal.getSignalName();
+            line = COMMENT + signal.getSignalName();
             bufferedWriter.write(line);
             bufferedWriter.newLine();
             if (signal.isTPConfigDW()) {
-                line = "\t\t\tposition = " + signal.getBitPosition();
+                line = "position = " + signal.getBitPosition();
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
-                line = "\t\t\tGETBIT(TPConfigDW" + signal.getEnabledTPConfigDW() + ", enabled, position)";
+                line = "GETBIT(TPConfigDW" + signal.getEnabledTPConfigDW() + ", enabled, position)";
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
-                line = "\t\t\tif enabled then";
+                line = "if enabled then";
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
             } else {
                 if (signal.getEnabledCondition().equals("x") && signal.getEnabledAddr() == 0) {
-                    line = "\t\t\tenabled = true";
+                    line = "enabled = true";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tif enabled then";
+                    line = "if enabled then";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
                 }
                 if (signal.getEnabledCondition().equals("x") && signal.getEnabledAddr() != 0) {
-                    line = "\t\t\treg = " + signal.getEnabledReg();
+                    line = "reg = " + signal.getEnabledReg();
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\taddr = " + signal.getEnabledAddr();
+                    line = "addr = " + signal.getEnabledAddr();
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tenabled = GetShortFromPLC(kkID, reg, addr)";
+                    line = "enabled = GetShortFromPLC(kkID, reg, addr)";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tif enabled then";
+                    line = "if enabled then";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
                 }
                 if (!signal.getEnabledCondition().equals("x") && signal.getEnabledAddr() != 0) {
-                    line = "\t\t\treg = " + signal.getEnabledReg();
+                    line = "reg = " + signal.getEnabledReg();
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\taddr = " + signal.getEnabledAddr();
+                    line = "addr = " + signal.getEnabledAddr();
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tstate = GetShortFromPLC(kkID, reg, addr)";
+                    line = "state = GetShortFromPLC(kkID, reg, addr)";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tif state " + signal.getEnabledCondition() + " then";
+                    line = "if state " + signal.getEnabledCondition() + " then";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\t\tenabled = true";
+                    line = "\tenabled = true";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\telse";
+                    line = "else";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\t\tenabled = false";
+                    line = "\tenabled = false";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tend if";
+                    line = "end if";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
-                    line = "\t\t\tif enabled then";
+                    line = "if enabled then";
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
                 }
             }
 
             line = "\tstringID = " + signal.getStringId() + "\n" +
-                    "\treg = " + signal.getEnabledReg() + "\n" +
-                    "\taddr = " + signal.getEnabledAddr() + "\n" +
+                    "\treg = " + signal.getSignalReg() + "\n" +
+                    "\taddr = " + signal.getSignalAddr() + "\n" +
                     "\ttype = " + signal.getDataType() + "\n" +
                     "\tscale = " + (signal.getScale() != 1.0 ? "true" : "false") + "\n" +
                     "\tdisabled = " + signal.isDisabled() + "\n" +
