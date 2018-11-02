@@ -3,7 +3,7 @@ package utilities;
 import entities.LoopCtrl;
 import entities.sets.RoomCtrls;
 import exceptions.WrongFormatException;
-import helpers.ExcelHelpers;
+import helpers.excel.ExcelHelpers;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
