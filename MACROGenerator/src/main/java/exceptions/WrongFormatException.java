@@ -1,8 +1,10 @@
 package exceptions;
 
 public class WrongFormatException extends Exception {
-    public WrongFormatException() {}
+    public WrongFormatException() {
+        super("Wrong Format Exception.");
+    }
     public WrongFormatException(String message) {
-        super(message);
+        super("Wrong Format Exception: " + message);
     }
 }

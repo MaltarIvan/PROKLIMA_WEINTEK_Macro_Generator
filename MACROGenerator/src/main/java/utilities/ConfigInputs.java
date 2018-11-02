@@ -6,6 +6,7 @@ import entities.sets.FireDamprs;
 import entities.sets.RoomPressures;
 import entities.sets.VAVSwitches;
 import exceptions.WrongFormatException;
+import helpers.ExcelHelpers;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -309,35 +310,35 @@ public class ConfigInputs {
                 switch (cell.getStringCellValue().trim()) {
                     case FIRE_DAMPR_EN_REG:
                         cell = row.getCell(1);
-                        fireDamprEnReg = getIntVarValue(cell);
+                        fireDamprEnReg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_EN_ADDR:
                         cell = row.getCell(1);
-                        fireDamprEnAddr = getIntVarValue(cell);
+                        fireDamprEnAddr = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_REG:
                         cell = row.getCell(1);
-                        fireDamprReg = getIntVarValue(cell);
+                        fireDamprReg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_ADDR_START:
                         cell = row.getCell(1);
-                        fireDamprAddr = getIntVarValue(cell);
+                        fireDamprAddr = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_DATA_TYPE:
                         cell = row.getCell(1);
-                        fireDamprDataType = getIntVarValue(cell);
+                        fireDamprDataType = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_STRING_ID_START:
                         cell = row.getCell(1);
-                        fireDamprStringIdStart = getIntVarValue(cell);
+                        fireDamprStringIdStart = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_CLOSED_EN_REG:
                         cell = row.getCell(1);
-                        fireDamprClosedEnReg = getIntVarValue(cell);
+                        fireDamprClosedEnReg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case FIRE_DAMPR_CLOSED_EN_ADDR:
                         cell = row.getCell(1);
-                        fireDampsClosedEnAddr = getIntVarValue(cell);
+                        fireDampsClosedEnAddr = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case STATES:
                         ArrayList<String[]> statesStr = new ArrayList<>();
@@ -380,9 +381,6 @@ public class ConfigInputs {
                         }
                         break;
                     default:
-                        System.out.println(FIRE_DAMPR_CLOSED_EN_REG);
-                        System.out.println(cell.getStringCellValue());
-                        System.out.println(FIRE_DAMPR_CLOSED_EN_REG.equals(cell.getStringCellValue()));
                         throw new WrongFormatException("No variable name \"" + cell.getStringCellValue() + "\" found in " + path + ".");
                 }
             } else {
@@ -417,31 +415,31 @@ public class ConfigInputs {
                 switch (cell.getStringCellValue().trim()) {
                     case ROOM_PRESSURES_EN_REG:
                         cell = row.getCell(1);
-                        enabledReg = getIntVarValue(cell);
+                        enabledReg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case ROOM_PRESSURES_EN_ADDR:
                         cell = row.getCell(1);
-                        enabledAddr = getIntVarValue(cell);
+                        enabledAddr = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case ROOM_PRESSURES_STRING_ID_START:
                         cell = row.getCell(1);
-                        stringIdStart = getIntVarValue(cell);
+                        stringIdStart = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case ROOM_PRESSURES_ADDR_START:
                         cell = row.getCell(1);
-                        addrStart = getIntVarValue(cell);
+                        addrStart = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case ROOM_PRESSURES_REG:
                         cell = row.getCell(1);
-                        reg = getIntVarValue(cell);
+                        reg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case ROOM_PRESSURES_DATA_TYPE:
                         cell = row.getCell(1);
-                        dataType = getIntVarValue(cell);
+                        dataType = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case ROOM_PRESSURES_SCALE:
                         cell = row.getCell(1);
-                        scale = getDoubleVarValue(cell);
+                        scale = ExcelHelpers.getDoubleVarValue(cell);
                         break;
                     default:
                         throw new WrongFormatException();
@@ -480,31 +478,31 @@ public class ConfigInputs {
                 switch (cell.getStringCellValue().trim()) {
                     case VAV_SWITCHES_EN_REG:
                         cell = row.getCell(1);
-                        enabledReg = getIntVarValue(cell);
+                        enabledReg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case VAV_SWITCHES_EN_ADDR:
                         cell = row.getCell(1);
-                        enabledAddr = getIntVarValue(cell);
+                        enabledAddr = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case VAV_SWITCHES_REG:
                         cell = row.getCell(1);
-                        reg = getIntVarValue(cell);
+                        reg = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case VAV_SWITCHES_ADDR_START:
                         cell = row.getCell(1);
-                        addrStart = getIntVarValue(cell);
+                        addrStart = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case VAV_SWITCHES_STRING_ID_START:
                         cell = row.getCell(1);
-                        stringIdStart = getIntVarValue(cell);
+                        stringIdStart = ExcelHelpers.getIntVarValue(cell);
                         break;
                         case VAV_SWITCHES_DATA_TYPE:
                             cell = row.getCell(1);
-                            dataType = getIntVarValue(cell);
+                            dataType = ExcelHelpers.getIntVarValue(cell);
                             break;
                     case VAV_SWITCHES_MAX_COUNT:
                         cell = row.getCell(1);
-                        maxVAVSwitches = getIntVarValue(cell);
+                        maxVAVSwitches = ExcelHelpers.getIntVarValue(cell);
                         break;
                     case STATES:
                         ArrayList<String[]> statesStr = new ArrayList<>();
@@ -537,28 +535,6 @@ public class ConfigInputs {
         return new VAVSwitches(maxVAVSwitches, enabledReg, enabledAddr, stringIdStart, addrStart, reg, dataType, states);
     }
 
-    private int getIntVarValue(Cell cell) throws WrongFormatException {
-        switch (cell.getCellType()) {
-            case STRING:
-                return Integer.parseInt(cell.getStringCellValue());
-            case NUMERIC:
-                return (int) cell.getNumericCellValue();
-            default:
-                throw new WrongFormatException();
-        }
-    }
-
-    private double getDoubleVarValue(Cell cell) throws WrongFormatException {
-        switch (cell.getCellType()) {
-            case STRING:
-                return Integer.parseInt(cell.getStringCellValue());
-            case NUMERIC:
-                return cell.getNumericCellValue();
-            default:
-                throw new WrongFormatException();
-        }
-    }
-
     public String getPath() {
         return path;
     }
@@ -567,12 +543,12 @@ public class ConfigInputs {
         this.path = path;
     }
 
-    public ArrayList<Signal> getDegital() {
+    public ArrayList<Signal> getDigital() {
         return digital;
     }
 
-    public void setDegital(ArrayList<Signal> degital) {
-        this.digital = degital;
+    public void setDigital(ArrayList<Signal> digital) {
+        this.digital = digital;
     }
 
     public ArrayList<Signal> getAnalog() {
